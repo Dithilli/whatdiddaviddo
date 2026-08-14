@@ -148,7 +148,7 @@ h1 .q{color:var(--signal);display:inline-block}
 .invert .note{color:#46525C}.invert .note strong{color:var(--ink)}
 
 /* folders — ripple build */
-.folders{display:grid;grid-template-columns:repeat(auto-fill,minmax(20px,1fr));gap:5px;margin-top:46px;max-width:700px}
+.folders{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(20px,1fr));gap:5px;margin-top:46px;max-width:700px}
 .folders b{aspect-ratio:1;display:block;background:rgba(14,19,23,.09);
   opacity:0;transform:scale(.4);
   transition:opacity .4s ease,transform .5s var(--ease),background .45s ease}
@@ -268,7 +268,130 @@ h1 .q{color:var(--signal);display:inline-block}
 footer{padding:56px 0 76px;border-top:1px solid var(--hair)}
 footer p{margin:0;font-size:13.5px;color:var(--fog);max-width:44em}
 footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.2em;color:var(--bone)}
+.ticker a{color:var(--fog);text-decoration:none;transition:color .2s ease}
+.ticker a:hover{color:var(--bone)}
+.ticker a:hover b{color:var(--signal)}
+.hd{position:relative}
+.hd a.prlink{color:#6C7885;text-decoration:none;border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease}
+.hd:hover a.prlink,.hd a.prlink:hover{color:#B83A26;border-bottom-color:#B83A26}
+.hd a.prlink::after{content:" \2197";font-size:.9em;opacity:0;transition:opacity .2s ease}
+.hd:hover a.prlink::after{opacity:1}
 :focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+/* ============ illustrated vignettes ============ */
+.vig{margin-top:34px;position:relative}
+.vig svg{display:block;overflow:visible}
+.vig .st{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.5}
+.vig .acc{fill:none;stroke:var(--signal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.vig .acc2{fill:none;stroke:var(--ochre);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.invert .vig .acc2{stroke:#A97F2E}
+.vig .fillacc{fill:var(--signal);stroke:none}
+.vig .cap{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;fill:currentColor;opacity:.45}
+
+/* draw-on helper */
+.draw{stroke-dasharray:var(--len,300);stroke-dashoffset:var(--len,300);
+  transition:stroke-dashoffset 1.2s var(--ease) .35s}
+.in .draw{stroke-dashoffset:0}
+
+/* --- hero: signature squiggle --- */
+.squig{--len:520;margin-top:14px;max-width:430px}
+.squig .acc{stroke-width:3}
+
+/* --- 01: coffee, steam --- */
+.cup{max-width:120px}
+@media (prefers-reduced-motion:no-preference){
+  .in .cup .steam{animation:rise 3s ease-in-out infinite}
+  .in .cup .steam:nth-of-type(2){animation-delay:.5s}
+  .in .cup .steam:nth-of-type(3){animation-delay:1s}
+  @keyframes rise{
+    0%{opacity:0;transform:translateY(6px)}
+    30%{opacity:.75}
+    100%{opacity:0;transform:translateY(-12px)}
+  }
+}
+.cup .steam{opacity:0;transform-origin:center bottom}
+
+/* --- 02: three meetings colliding --- */
+.collide{max-width:280px}
+.collide .blk{opacity:0}
+.in .collide .blk{animation:slam .6s var(--ease) forwards}
+.in .collide .blk:nth-of-type(2){animation-delay:.22s}
+.in .collide .blk:nth-of-type(3){animation-delay:.44s}
+@keyframes slam{
+  0%{opacity:0;transform:translateX(-26px)}
+  70%{opacity:1;transform:translateX(3px)}
+  100%{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .in .collide .shake{animation:jit .28s ease-in-out .95s 3}
+  @keyframes jit{0%,100%{transform:translateX(0)}25%{transform:translateX(-2.5px)}75%{transform:translateX(2.5px)}}
+}
+
+/* --- 03: magnifier sweeping the grid --- */
+.glass{position:absolute;right:4%;top:-14px;width:96px;pointer-events:none;z-index:3}
+@media (prefers-reduced-motion:no-preference){
+  .in .glass{animation:sweep 7s ease-in-out 1.4s infinite}
+  @keyframes sweep{
+    0%{transform:translate(0,0) rotate(0)}
+    25%{transform:translate(-190px,44px) rotate(-9deg)}
+    50%{transform:translate(-70px,110px) rotate(5deg)}
+    75%{transform:translate(-250px,150px) rotate(-4deg)}
+    100%{transform:translate(0,0) rotate(0)}
+  }
+}
+.glass .lens{fill:rgba(228,80,58,.07)}
+
+/* --- 04: tick + empty set --- */
+.verdict{display:flex;align-items:center;gap:26px;max-width:280px}
+.verdict svg{width:64px;flex:none}
+.tick{--len:60}
+.nul{--len:120}
+.verdict .lbl{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--fog)}
+
+/* --- 05: blank name badges --- */
+.badges{max-width:340px}
+.badges .badge{transform-origin:50% 4px}
+@media (prefers-reduced-motion:no-preference){
+  .in .badges .badge{animation:swing 4.2s ease-in-out infinite}
+  .in .badges .badge:nth-of-type(2){animation-delay:.55s}
+  .in .badges .badge:nth-of-type(3){animation-delay:1.1s}
+  @keyframes swing{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+}
+
+/* --- 06: boomerang --- */
+.boom{max-width:230px}
+.boom .rang{transform-origin:24px 46px}
+@media (prefers-reduced-motion:no-preference){
+  .in .boom .rang{animation:throw 4.4s ease-in-out 1s infinite}
+  @keyframes throw{
+    0%{transform:translate(0,0) rotate(0)}
+    45%{transform:translate(168px,-26px) rotate(560deg)}
+    55%{transform:translate(168px,-26px) rotate(700deg)}
+    100%{transform:translate(0,0) rotate(1260deg)}
+  }
+}
+
+/* --- 08: rubber stamp --- */
+.stamp{max-width:150px}
+@media (prefers-reduced-motion:no-preference){
+  .in .stamp .press{animation:press 3.4s ease-in-out 1s infinite}
+  @keyframes press{
+    0%,55%,100%{transform:translateY(0)}
+    68%,78%{transform:translateY(19px)}
+  }
+  .in .stamp .mark{animation:inked 3.4s ease-in-out 1s infinite}
+  @keyframes inked{0%,68%{opacity:0}78%,100%{opacity:1}}
+}
+.stamp .mark{opacity:0}
+
+/* --- 09: clipboard ticks --- */
+.clip{max-width:190px}
+.clip .tk{--len:26;stroke-dasharray:26;stroke-dashoffset:26;transition:stroke-dashoffset .4s var(--ease)}
+.in .clip .tk{stroke-dashoffset:0}
+.in .clip .tk:nth-of-type(1){transition-delay:.5s}
+.in .clip .tk:nth-of-type(2){transition-delay:.75s}
+.in .clip .tk:nth-of-type(3){transition-delay:1s}
+.in .clip .tk:nth-of-type(4){transition-delay:1.25s}
+
 </style>
 </head>
 <body>
@@ -279,6 +402,10 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
   <div class="inner">
     <span class="num-tag">8 &mdash; 14 AUGUST 2026</span>
     <h1><span class="ln"><i>What did</i></span><span class="ln"><i>David do<span class="q">?</span></i></span></h1>
+    <div class="vig squig" aria-hidden="true">
+      <svg viewBox="0 0 430 26"><path class="acc draw" d="M4 17c34-14 62 6 96-2s44-16 78-8 52 16 86 8 44-12 74-4 60 8 88-4"/></svg>
+    </div>
+
     <div class="meta rv d2">
       <div><span class="v" data-count="26">0</span><span class="k">MERGED</span></div>
       <div><span class="v" data-count="16">0</span><span class="k">OPEN</span></div>
@@ -289,13 +416,23 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
   </div>
 </section>
 
-<div class="ticker" aria-hidden="true"><div class="run" id="run"></div></div>
+<div class="ticker"><div class="run" id="run"></div></div>
 
 <section class="scene" data-scene>
   <div class="inner">
     <span class="num-tag">01 &mdash; SHIPPING RATE</span>
     <h2><span class="ln"><i>Monday did the work.</i></span></h2>
     <p class="lede rv d2">Pull requests merged, by day. Thursday looks quiet. Thursday was not quiet.</p>
+    <div class="vig cup" aria-hidden="true">
+      <svg viewBox="0 0 120 96">
+        <path class="st steam" d="M40 30c0-8 8-8 8-16s-8-8-8-16"/>
+        <path class="st steam" d="M60 30c0-8 8-8 8-16s-8-8-8-16"/>
+        <path class="st steam" d="M80 30c0-8 8-8 8-16s-8-8-8-16"/>
+        <path class="st" d="M22 42h68v24a22 22 0 0 1-22 22H44a22 22 0 0 1-22-22z"/>
+        <path class="acc2" d="M90 50h10a13 13 0 0 1 0 26h-10"/>
+      </svg>
+    </div>
+
     <div class="chart" id="chart">
       <div class="bar" style="--h:3%"><span class="n">0</span><span class="fill"></span><span class="d">SAT</span></div>
       <div class="bar" style="--h:25%"><span class="n">2</span><span class="fill"></span><span class="d">SUN</span></div>
@@ -313,6 +450,18 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
     <span class="num-tag">02 &mdash; THE OTHER HALF OF THE WEEK</span>
     <h2><span class="ln"><i>Nineteen hours</i></span><span class="ln"><i>of meetings.</i></span></h2>
     <p class="lede rv d2">Twenty-one of them. Four were separately, independently called a <em>dry run</em>.</p>
+    <div class="vig collide" aria-hidden="true">
+      <svg viewBox="0 0 280 92">
+        <g class="shake">
+          <rect class="blk acc2" x="8"  y="10" width="150" height="20" rx="2" fill="none"/>
+          <rect class="blk acc2" x="30" y="36" width="150" height="20" rx="2" fill="none"/>
+          <rect class="blk acc"  x="52" y="62" width="150" height="20" rx="2" fill="none"/>
+        </g>
+        <line class="st" x1="200" y1="4" x2="200" y2="90" stroke-dasharray="3 5"/>
+        <text class="cap" x="210" y="50">10:00</text>
+      </svg>
+    </div>
+
     <div class="week" id="week">
       <div class="wd"><span class="stack"><i style="height:14%"></i><i style="height:7%"></i><i style="height:17%"></i><i style="height:17%"></i><i style="height:17%"></i><i style="height:17%"></i></span><span class="wl">MON<b>4h55</b></span></div>
       <div class="wd"><span class="stack"><i style="height:30%"></i><i style="height:25%"></i><i style="height:45%"></i></span><span class="wl">TUE<b>3h20</b></span></div>
@@ -329,6 +478,14 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
     <span class="num-tag">03 &mdash; THE INVISIBLE CORPUS</span>
     <h2><span class="ln"><i>134 folders.</i></span><span class="ln"><i>We could see four.</i></span></h2>
     <p class="lede rv d2">Unmounted shared folders don't appear in the listing API at any depth. Not hidden &mdash; <em>invisible</em>. And that one call backs both the folder picker and the sync.</p>
+        <div class="glass" aria-hidden="true">
+      <svg viewBox="0 0 96 96">
+        <circle class="lens" cx="38" cy="38" r="27"/>
+        <circle class="acc" cx="38" cy="38" r="27"/>
+        <line class="acc" x1="58" y1="58" x2="86" y2="86" stroke-width="4"/>
+        <path class="acc" d="M27 33a11 11 0 0 1 11-8" opacity=".5"/>
+      </svg>
+    </div>
     <div class="folders" id="folders" aria-hidden="true"></div>
     <div class="key rv d2">
       <span><i class="on"></i>VISIBLE &mdash; 4</span>
@@ -349,6 +506,12 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
         <span class="zero">0 DOCUMENTS INDEXED</span>
       </div>
     </div>
+    <div class="vig verdict" aria-hidden="true">
+      <svg viewBox="0 0 64 64"><path class="acc2 draw tick" d="M12 34l14 14 26-32"/></svg>
+      <span class="lbl">BUT</span>
+      <svg viewBox="0 0 64 64"><circle class="acc draw nul" cx="32" cy="32" r="20"/><line class="acc" x1="16" y1="48" x2="48" y2="16"/></svg>
+    </div>
+
   </div>
 </section>
 
@@ -363,6 +526,29 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
       <div class="rec"><span class="id">id: &mdash;</span><span class="ty">CREDIT MEMO</span></div>
       <div class="rec"><span class="id">id: &mdash;</span><span class="ty">CONTACT</span></div>
     </div>
+    <div class="vig badges" aria-hidden="true">
+      <svg viewBox="0 0 340 104">
+        <g class="badge" transform="translate(4 0)">
+          <line class="st" x1="46" y1="0" x2="46" y2="16"/>
+          <rect class="st" x="6" y="16" width="80" height="56" rx="3"/>
+          <text class="cap" x="16" y="38">ID</text>
+          <line class="acc" x1="16" y1="54" x2="76" y2="54" stroke-dasharray="4 5"/>
+        </g>
+        <g class="badge" transform="translate(120 0)">
+          <line class="st" x1="46" y1="0" x2="46" y2="16"/>
+          <rect class="st" x="6" y="16" width="80" height="56" rx="3"/>
+          <text class="cap" x="16" y="38">ID</text>
+          <line class="acc" x1="16" y1="54" x2="76" y2="54" stroke-dasharray="4 5"/>
+        </g>
+        <g class="badge" transform="translate(236 0)">
+          <line class="st" x1="46" y1="0" x2="46" y2="16"/>
+          <rect class="st" x="6" y="16" width="80" height="56" rx="3"/>
+          <text class="cap" x="16" y="38">ID</text>
+          <line class="acc" x1="16" y1="54" x2="76" y2="54" stroke-dasharray="4 5"/>
+        </g>
+      </svg>
+    </div>
+
     <p class="note rv d3">So Thursday went to a direct transport built around them. <strong>25 commits, one evening.</strong> That's why Thursday only shows four merges &mdash; Thursday was one enormous thing.</p>
   </div>
 </section>
@@ -377,6 +563,16 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
       <span class="arw">&rarr;</span>
       <span class="code now" id="now"></span>
     </div>
+    <div class="vig boom" aria-hidden="true">
+      <svg viewBox="0 0 230 92">
+        <path class="st" d="M6 78c56 0 96-8 132-30" stroke-dasharray="3 6"/>
+        <g class="rang">
+          <path class="acc" d="M24 30l16 16-16 16-6-16z" fill="none" stroke-width="2.5"/>
+        </g>
+        <text class="cap" x="150" y="84">IT COMES BACK</text>
+      </svg>
+    </div>
+
   </div>
 </section>
 
@@ -397,7 +593,7 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
         <path class="wire" d="M151 64 C 300 64, 300 31, 440 31" />
         <path class="dead" d="M151 64 C 300 64, 300 118, 440 118" />
         <text class="lbl" x="596" y="124" style="fill:#E4503A">0 SYNCS</text>
-        <circle class="pkt" cx="160" cy="60" r="5" />
+        <path class="pkt" d="M152 54l18 7-18 7 4-7z" />
       </svg>
     </div>
 
@@ -421,14 +617,26 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
     <span class="num-tag">08 &mdash; NEGATIVE RESULTS</span>
     <h2><span class="ln"><i>Two of them</i></span><span class="ln"><i>were failures.</i></span></h2>
     <p class="lede rv d2">Both retrieval experiments. Both written up, both left open, both labelled so nobody merges them by accident.</p>
+    <div class="vig stamp" aria-hidden="true">
+      <svg viewBox="0 0 150 96">
+        <g class="press">
+          <rect class="st" x="46" y="4"  width="58" height="14" rx="3"/>
+          <rect class="st" x="62" y="18" width="26" height="16"/>
+          <rect class="acc" x="34" y="34" width="82" height="20" rx="2"/>
+        </g>
+        <line class="st" x1="10" y1="86" x2="140" y2="86"/>
+        <rect class="mark acc" x="38" y="62" width="74" height="18" rx="2"/>
+      </svg>
+    </div>
+
     <div class="held rv d2" id="held">
       <div class="hd">
-        <span class="pr">PR #3171</span>
+        <span class="pr"><a class="prlink" href="https://github.com/hyperspell/hyperspell/pull/3171" target="_blank" rel="noopener">PR #3171</a></span>
         <p>Resolve "my", "me" and "I" to the person asking. It worked. I oversold the measurement.</p>
         <span class="tagline">DO NOT MERGE</span>
       </div>
       <div class="hd">
-        <span class="pr">PR #3170</span>
+        <span class="pr"><a class="prlink" href="https://github.com/hyperspell/hyperspell/pull/3170" target="_blank" rel="noopener">PR #3170</a></span>
         <p>Stop the answer model second-guessing itself. It traded polite abstentions for confident wrong answers.</p>
         <span class="tagline">DO NOT MERGE</span>
       </div>
@@ -441,6 +649,22 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
     <span class="num-tag">09 &mdash; RECONCILED</span>
     <h2><span class="ln"><i>Then the paperwork.</i></span></h2>
     <p class="lede rv d2">Eight of this week's pull requests had no ticket at all. Four tickets disagreed with what had shipped &mdash; including one marked <em>done</em> while its zero-document fix sat unmerged.</p>
+    <div class="vig clip" aria-hidden="true">
+      <svg viewBox="0 0 190 118">
+        <rect class="st" x="16" y="10" width="158" height="104" rx="4"/>
+        <rect class="st" x="72" y="2" width="46" height="16" rx="4"/>
+        <rect class="st" x="32" y="34" width="14" height="14" rx="2"/>
+        <rect class="st" x="32" y="58" width="14" height="14" rx="2"/>
+        <rect class="st" x="32" y="82" width="14" height="14" rx="2"/>
+        <line class="st" x1="58" y1="41" x2="156" y2="41"/>
+        <line class="st" x1="58" y1="65" x2="156" y2="65"/>
+        <line class="st" x1="58" y1="89" x2="140" y2="89"/>
+        <path class="acc2 tk" d="M34 41l5 5 9-11"/>
+        <path class="acc2 tk" d="M34 65l5 5 9-11"/>
+        <path class="acc2 tk" d="M34 89l5 5 9-11"/>
+      </svg>
+    </div>
+
     <div class="tally rv d2" id="tally">
       <div><span class="v" data-count="26">0</span><span class="k">MERGED</span></div>
       <div><span class="v" data-count="16">0</span><span class="k">OPEN</span></div>
@@ -475,15 +699,19 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
   if (!reduce){ window.addEventListener('scroll', onScroll, {passive:true}); onScroll(); }
 
   /* ticker */
-  var titles = ['Odoo accounting integration','Direct XML-RPC transport','Dropbox shared namespaces',
-    'Per-tenant query effort floor','Recency must reorder, not delete','Jira per-app project denylist',
-    'PPTX speaker-notes serializer','Fellow AI-notes mapping','EU Unified region resolution',
-    'Kill switches survive a flag outage','Chunkless documents terminal status','Malformed id returns 400',
-    'Hibernated apps labelled in the switcher','Live-search evidence kept distinct'];
+  var REPO = 'https://github.com/hyperspell/hyperspell/pull/';
+  var titles = [[3181,'Odoo accounting integration'],[3225,'Direct XML-RPC transport'],
+    [3230,'Dropbox shared namespaces'],[3193,'Per-tenant query effort floor'],
+    [3175,'Recency must reorder, not delete'],[3172,'Jira per-app project denylist'],
+    [3176,'PPTX speaker-notes serializer'],[3220,'Fellow AI-notes mapping'],
+    [3250,'EU Unified region resolution'],[3217,'Kill switches survive a flag outage'],
+    [3174,'Chunkless documents terminal status'],[3215,'Malformed id returns 400'],
+    [3188,'Hibernated apps labelled in the switcher'],[3185,'Live-search evidence kept distinct']];
   var run = document.getElementById('run');
   if (run){
-    var html = titles.map(function(t,i){
-      return '<span><b>' + String(i+1).padStart(2,'0') + '</b> ' + t + '</span>';
+    var html = titles.map(function(t){
+      return '<span><a href="' + REPO + t[0] + '" target="_blank" rel="noopener">' +
+             '<b>#' + t[0] + '</b> ' + t[1] + '</a></span>';
     }).join('');
     run.innerHTML = html + html;
   }
