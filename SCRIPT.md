@@ -24,7 +24,18 @@ The page carries almost no detail on purpose. The detail is here, in your mouth.
 
 ---
 
-## Card 02 — "134 folders. We could see 4."
+## Card 02 — "Also: 19 hours of meetings."
+
+> Before I get into the actual work — context.
+> Twenty-one meetings this week. Nineteen hours. That's basically half the week on video calls.
+> Four separate events on my calendar were literally called a "dry run," which tells you what kind of week it was.
+> And look at Thursday. Thursday I had four and a half hours of calls, *and* at ten in the morning I had three meetings booked on top of each other.
+> Thursday was also my single biggest coding day of the week — twenty-five commits and about two thousand lines. I don't fully know how. Adrenaline, probably.
+> Wednesday's the opposite: three and a half hours of calls, and only two things shipped. That's not a mystery, that's just arithmetic.
+
+---
+
+## Card 03 — "134 folders. We could see 4."
 
 > Okay. This one's my favorite.
 > A customer told us the Dropbox folder picker was, quote, "giving us only the wrong folders." They were seeing about ten. We were actually showing seven.
@@ -36,7 +47,7 @@ The page carries almost no detail on purpose. The detail is here, in your mouth.
 
 ---
 
-## Card 03 — "It said 100%. It found nothing."
+## Card 04 — "It said 100%. It found nothing."
 
 > This is what that bug looked like from the outside, and this is the part that bothers me.
 > The sync ran. It went to a hundred percent. It finished cleanly. It reported success.
@@ -46,7 +57,7 @@ The page carries almost no detail on purpose. The detail is here, in your mouth.
 
 ---
 
-## Card 04 — "The connector sent back ghosts."
+## Card 05 — "The connector sent back ghosts."
 
 > Different integration, same species of problem.
 > Tuesday I shipped a whole accounting integration — invoices, bills, credit memos, contacts, the works. Twenty-five hundred lines. Felt great.
@@ -57,7 +68,7 @@ The page carries almost no detail on purpose. The detail is here, in your mouth.
 
 ---
 
-## Card 05 — "Turns out it was us."
+## Card 06 — "Turns out it was us."
 
 > Recurring theme of the week, and it's an embarrassing one.
 > Send our API a malformed ID and it returned a 502 — a gateway error. Which means we were telling customers *the upstream provider is down* when actually we had a validation bug.
@@ -67,7 +78,7 @@ The page carries almost no detail on purpose. The detail is here, in your mouth.
 
 ---
 
-## Card 06 — "An entire region. Zero syncs. Ever."
+## Card 07 — "An entire region. Zero syncs. Ever."
 
 > This is Friday, and it's the worst one.
 > We run separate infrastructure in the US and the EU. Our connection flow was creating *every* connection in the US region — including all the European ones.
@@ -77,7 +88,7 @@ The page carries almost no detail on purpose. The detail is here, in your mouth.
 
 ---
 
-## Card 07 — "Two of these were bad ideas."
+## Card 08 — "Two of these were bad ideas."
 
 > Quick honest note.
 > Two of the sixteen open PRs are failures, and I labelled them so nobody merges them by accident.
@@ -87,7 +98,7 @@ The page carries almost no detail on purpose. The detail is here, in your mouth.
 
 ---
 
-## Card 08 — "And then the paperwork."
+## Card 09 — "And then the paperwork."
 
 > Last one.
 > When I went back and checked, eight of this week's pull requests had no ticket at all. Just work that happened.
