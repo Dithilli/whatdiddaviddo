@@ -397,12 +397,6 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
 .act{color:var(--signal)}
 .invert .act{color:#B83A26}
 
-/* ---- 40 users ---- */
-.crowd{margin-top:46px;max-width:660px}
-.crowd svg{width:100%;height:auto;display:block}
-.crowd use{opacity:.16;transition:opacity .4s ease}
-.crowd.in use{opacity:1;fill:var(--signal)}
-.crowd .ppl{fill:currentColor}
 
 /* ---- proportion bar ---- */
 .prop{margin-top:44px;max-width:620px}
@@ -514,7 +508,7 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
   <div class="inner">
     <span class="num-tag act">ACT I &mdash; SHOPBACK &middot; THE SLACK BOT</span>
     <h2><span class="ln"><i>It held up</i></span><span class="ln"><i>on the demo.</i></span></h2>
-    <p class="statline rv d2">40 users &middot; <em>it performed</em></p>
+    <p class="statline rv d2">Their workspace &middot; <em>it performed</em></p>
 
     <div class="vig bubble" aria-hidden="true">
       <svg viewBox="0 0 260 96">
@@ -525,14 +519,7 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
         <text class="cap" x="212" y="52">ASKING</text>
       </svg>
     </div>
-
-    <div class="crowd" id="crowd" aria-hidden="true">
-      <svg viewBox="0 0 680 96">
-        <defs><g id="p" class="ppl"><circle cx="10" cy="9" r="8"/><path d="M0 34a10 10 0 0 1 20 0z"/></g></defs>
-        <g id="crowdrow"></g>
-      </svg>
-    </div>
-    <p class="statline rv d3">All 40 saw <em>someone else&rsquo;s connection</em> as their own</p>
+    <p class="statline rv d3">Everyone saw <em>someone else&rsquo;s connection</em> as their own</p>
     <div class="miss rv d3" id="slackwork">
       <div class="row gone"><span>Bot connection renders as the user&rsquo;s own</span><span class="ok">FIXED &middot; #3187</span></div>
       <div class="row gone"><span>Identity bridge moved onto the identities table</span><span class="ok">FIXED &middot; #3183</span></div>
@@ -564,46 +551,20 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
   </div>
 </section>
 
-<!-- 04 IntentHQ: notes + the 502 -->
+<!-- 04 IntentHQ: in progress -->
 <section class="scene" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT II &mdash; INTENTHQ &middot; NOTES AND BLAME</span>
-    <h2><span class="ln"><i>Then we blamed</i></span><span class="ln"><i>Linear for two days.</i></span></h2>
-    <p class="statline rv d2">First live connection &middot; <em>mapped to the wrong vendor</em></p>
+    <span class="num-tag act">ACT II &mdash; INTENTHQ &middot; STILL OPEN</span>
+    <h2><span class="ln"><i>Shipped Friday.</i></span><span class="ln"><i>Still not right.</i></span></h2>
+    <p class="statline rv d2">Fixes <em>didn&rsquo;t hold</em> on today&rsquo;s call</p>
 
     <div class="miss rv d2" id="miss">
-      <div class="row gone"><span>91 speaker-attributed turns</span><span class="ok">INTACT</span></div>
-      <div class="row gone"><span>Summary</span><span class="no">MISSING</span></div>
-      <div class="row gone"><span>Action items</span><span class="no">MISSING</span></div>
-      <div class="row gone"><span>Decisions</span><span class="no">MISSING</span></div>
-      <div class="row gone"><span>Topics</span><span class="no">MISSING</span></div>
+      <div class="row gone"><span>Meeting notes &mdash; speaker turns</span><span class="ok">INTACT</span></div>
+      <div class="row gone"><span>Summary, actions, decisions, topics</span><span class="no">WAS MISSING</span></div>
+      <div class="row gone"><span>EU connections, lifetime syncs</span><span class="no">ZERO</span></div>
     </div>
 
-    <p class="statline rv d3">No provider was ever contacted</p>
-
-    <div class="flip rv d3" id="flip">
-      <span class="code was">502</span>
-      <span class="arw">&rarr;</span>
-      <span class="code now" id="now"></span>
-    </div>
-    <div class="vig boom" aria-hidden="true">
-      <svg viewBox="0 0 230 92">
-        <path class="st" d="M6 78c56 0 96-8 132-30" stroke-dasharray="3 6"/>
-        <g class="rang"><path class="acc" d="M24 30l16 16-16 16-6-16z" fill="none" stroke-width="2.5"/></g>
-        <text class="cap" x="150" y="84">IT COMES BACK</text>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- 05 IntentHQ: the region -->
-<section class="scene" data-scene>
-  <div class="inner">
-    <span class="num-tag act">ACT II &mdash; INTENTHQ &middot; FRIDAY MORNING</span>
-    <h2><span class="ln"><i>Never synced.</i></span><span class="ln"><i>Not once. Ever.</i></span></h2>
-    <p class="statline rv d2">Region is permanent &middot; <em>no migration exists</em></p>
-
-    <div class="route rv d2" id="route">
+    <div class="route rv d3" id="route">
       <svg viewBox="0 0 700 150" role="img" aria-label="EU connect requests routed into the US region; the EU region receives nothing">
         <rect class="box" x="1" y="34" width="150" height="60" />
         <text class="lbl" x="20" y="70">EU CONNECT</text>
@@ -617,20 +578,7 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
         <path class="pkt" d="M152 54l18 7-18 7 4-7z" />
       </svg>
     </div>
-
-    <div class="regions rv d3" id="regions">
-      <div class="reg">
-        <h3>SAME KEY, US ENDPOINT</h3>
-        <p>Their three connection IDs: <strong>200 OK</strong>. Connections visible in the workspace: 100+.</p>
-        <div class="pings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      </div>
-      <div class="reg">
-        <h3>SAME KEY, EU ENDPOINT</h3>
-        <p>The same three IDs: <strong>404</strong>. Connections visible:</p>
-        <span class="zero-big">0</span>
-      </div>
-    </div>
-    <p class="statline rv d3">Found, fixed and merged <em>before lunch</em></p>
+    <p class="statline rv d3">Region is permanent &middot; <em>no migration exists</em></p>
   </div>
 </section>
 
@@ -809,15 +757,6 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
     strip.appendChild(f);
   }
 
-  var row = document.getElementById('crowdrow');
-  if (row){
-    var s = '';
-    for (var k=0;k<40;k++){
-      var cx = (k % 20) * 34, cy = Math.floor(k / 20) * 50;
-      s += '<use href="#p" x="' + cx + '" y="' + cy + '" style="transition-delay:' + (k*22) + 'ms"/>';
-    }
-    row.innerHTML = s;
-  }
 
   var fold = document.getElementById('folders');
   if (fold){
@@ -831,20 +770,6 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
     fold.appendChild(f2);
   }
 
-  var now = document.getElementById('now');
-  if (now){
-    '400'.split('').forEach(function(dig){
-      var reel = document.createElement('span'); reel.className = 'reel';
-      var col = document.createElement('u'), order = [];
-      for (var n=0;n<10;n++) order.push((parseInt(dig,10)+n) % 10);
-      order.reverse();
-      order.forEach(function(n){
-        var sp = document.createElement('span'); sp.textContent = n; col.appendChild(sp);
-      });
-      reel.appendChild(col); now.appendChild(reel);
-      requestAnimationFrame(function(){ col.dataset.target = '-' + (order.length - 1) + 'em'; });
-    });
-  }
 
   function countUp(el){
     var target = parseInt(el.getAttribute('data-count'), 10);
@@ -879,17 +804,12 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
       var t = e.target;
       t.classList.add('in');
       if (t.id === 'meter') runMeter();
-      if (t.id === 'flip'){
-        t.querySelectorAll('.reel u').forEach(function(col){
-          if (col.dataset.target) col.style.transform = 'translateY(' + col.dataset.target + ')';
-        });
-      }
       if (t.querySelectorAll) t.querySelectorAll('[data-count]').forEach(countUp);
       io.unobserve(t);
     });
   }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
 
-  document.querySelectorAll('[data-scene],.rv,#chart,#chart4,#week,#folders,#strip,#meter,#recs,#flip,#regions,#route,#held,#tally,#crowd,#prop,#miss,#slackwork')
+  document.querySelectorAll('[data-scene],.rv,#chart,#chart4,#folders,#strip,#meter,#recs,#route,#held,#tally,#prop,#miss,#slackwork')
     .forEach(function(n){ io.observe(n); });
 
   var hero = document.querySelector('.hero');
