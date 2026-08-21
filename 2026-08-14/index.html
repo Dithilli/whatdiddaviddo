@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>What Did David Do</title>
-<meta name="description" content="One engineering week, 15-21 August 2026, with receipts." />
+<meta name="description" content="One engineering week in nine cards, with receipts." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -447,13 +447,6 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
   @keyframes typing{0%,100%{opacity:.25}50%{opacity:1}}
 }
 
-
-/* ---- previous-week link ---- */
-footer p + p{margin-top:18px}
-footer .prev{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;
-  color:var(--fog);text-decoration:none;border-bottom:1px solid transparent;
-  transition:color .2s ease,border-color .2s ease}
-footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 </style>
 </head>
 <body>
@@ -462,16 +455,16 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 
 <section class="scene hero" data-scene>
   <div class="inner">
-    <span class="num-tag">15 &mdash; 21 AUGUST 2026</span>
+    <span class="num-tag">8 &mdash; 14 AUGUST 2026</span>
     <h1><span class="ln"><i>What did</i></span><span class="ln"><i>David do<span class="q">?</span></i></span></h1>
     <div class="vig squig" aria-hidden="true">
       <svg viewBox="0 0 430 26"><path class="acc draw" d="M4 17c34-14 62 6 96-2s44-16 78-8 52 16 86 8 44-12 74-4 60 8 88-4"/></svg>
     </div>
-    <p class="statline rv d2"><b>One picker</b> &middot; <b>customer-hosted connectors</b> &middot; <b>a tenant with the wrong address</b></p>
+    <p class="statline rv d2"><b>ShopBack</b> &middot; <b>IntentHQ</b> &middot; <b>Nature&rsquo;s Fusions</b></p>
     <div class="meta rv d2">
-      <div><span class="v" data-count="16">0</span><span class="k">MERGED</span></div>
-      <div><span class="v" data-count="8">0</span><span class="k">OPEN</span></div>
-      <div><span class="v" data-count="9">0</span><span class="k">CLOSED</span></div>
+      <div><span class="v" data-count="26">0</span><span class="k">MERGED</span></div>
+      <div><span class="v" data-count="16">0</span><span class="k">OPEN</span></div>
+      <div><span class="v" data-count="3">0</span><span class="k">CUSTOMERS</span></div>
     </div>
     <div class="strip rv d3" id="strip" aria-hidden="true"></div>
     <p class="cue rv d3"><span>SCROLL &darr;</span></p>
@@ -480,40 +473,42 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 
 <div class="ticker"><div class="run" id="run"></div></div>
 
-<!-- 02 the picker stack -->
-<section class="scene invert" data-scene>
+<!-- 01 shape of the week -->
+<section class="scene" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT I &mdash; THE PICKER &middot; BUILT THREE TIMES</span>
-    <h2><span class="ln"><i>Three pickers.</i></span><span class="ln"><i>Now one.</i></span></h2>
-    <p class="statline rv d2">Connect &middot; the dashboard &middot; <em>and a third, half-alive in onboarding</em></p>
-
-    <div class="flip rv d2" id="flip">
-      <span class="code was">3</span>
-      <span class="arw">&rarr;</span>
-      <span class="code" style="color:#2E7A69">1</span>
+    <span class="num-tag">01 &mdash; THE SHAPE OF THE WEEK</span>
+    <h2><span class="ln"><i>Half code.</i></span><span class="ln"><i>Half calls.</i></span></h2>
+    <p class="statline rv d2">26 merged &middot; 21 meetings &middot; <em>19 hours on video</em></p>
+    <div class="chart" id="chart">
+      <div class="bar" style="--h:3%"><span class="n">0</span><span class="fill"></span><span class="d">SAT</span></div>
+      <div class="bar" style="--h:25%"><span class="n">2</span><span class="fill"></span><span class="d">SUN</span></div>
+      <div class="bar peak" style="--h:100%"><span class="n">8</span><span class="fill"></span><span class="d">MON</span></div>
+      <div class="bar" style="--h:88%"><span class="n">7</span><span class="fill"></span><span class="d">TUE</span></div>
+      <div class="bar" style="--h:25%"><span class="n">2</span><span class="fill"></span><span class="d">WED</span></div>
+      <div class="bar" style="--h:50%"><span class="n">4</span><span class="fill"></span><span class="d">THU</span></div>
+      <div class="bar" style="--h:38%"><span class="n">3</span><span class="fill"></span><span class="d">FRI</span></div>
     </div>
-
-    <p class="statline rv d3">Seven pull requests &middot; <em>all merged 17 August</em></p>
-    <div class="miss rv d3" id="stack">
-      <div class="row gone"><span>Yarn workspace root &mdash; no behavior change</span><span class="ok">#3262 &middot; &minus;5,515</span></div>
-      <div class="row gone"><span>Headless core in packages/picker</span><span class="ok">#3263 &middot; +2,077</span></div>
-      <div class="row gone"><span>Connect skin over the shared core</span><span class="ok">#3264 &middot; +2,207</span></div>
-      <div class="row gone"><span>Dashboard skin &mdash; the duplicate is deleted</span><span class="ok">#3265 &middot; &minus;745</span></div>
-      <div class="row gone"><span>Onboarding hosts the pickers outside the iframe</span><span class="ok">#3266 &middot; +1,228</span></div>
-      <div class="row gone"><span>Dashboard front door</span><span class="ok">#3270 &middot; +1,645</span></div>
-      <div class="row gone"><span>Design and agent handoff, written first</span><span class="ok">#3257 &middot; +454</span></div>
+    <div class="vig collide" aria-hidden="true">
+      <svg viewBox="0 0 280 92">
+        <g class="shake">
+          <rect class="blk acc2" x="8"  y="10" width="150" height="20" rx="2" fill="none"/>
+          <rect class="blk acc2" x="30" y="36" width="150" height="20" rx="2" fill="none"/>
+          <rect class="blk acc"  x="52" y="62" width="150" height="20" rx="2" fill="none"/>
+        </g>
+        <line class="st" x1="200" y1="4" x2="200" y2="90" stroke-dasharray="3 5"/>
+        <text class="cap" x="210" y="50">10:00</text>
+      </svg>
     </div>
-
-    <p class="note rv d3">The dashboard copy was <strong>509 lines that already existed elsewhere</strong>. Deleting it was the fourth step, not the first &mdash; every one of the seven ships on its own.</p>
+    <p class="statline rv d3">Thursday: <em>3 meetings at once</em> &middot; 25 commits</p>
   </div>
 </section>
 
-<!-- 03 external MCP -->
+<!-- 02 ShopBack: the Slack bot -->
 <section class="scene" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT II &mdash; CONNECTORS &middot; BRING YOUR OWN</span>
-    <h2><span class="ln"><i>Point us at</i></span><span class="ln"><i>your own server.</i></span></h2>
-    <p class="statline rv d2">#3267 &middot; <em>+6,916 lines</em> &middot; the largest of the week</p>
+    <span class="num-tag act">ACT I &mdash; SHOPBACK &middot; THE SLACK BOT</span>
+    <h2><span class="ln"><i>It held up</i></span><span class="ln"><i>on the demo.</i></span></h2>
+    <p class="statline rv d2">Their workspace &middot; <em>it performed</em></p>
 
     <div class="vig bubble" aria-hidden="true">
       <svg viewBox="0 0 260 96">
@@ -521,66 +516,174 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
         <circle class="acc dot" cx="66" cy="48" r="5"/>
         <circle class="acc dot" cx="88" cy="48" r="5"/>
         <circle class="acc dot" cx="110" cy="48" r="5"/>
-        <text class="cap" x="206" y="52">DISCOVERING</text>
+        <text class="cap" x="212" y="52">ASKING</text>
       </svg>
     </div>
-
-    <div class="miss rv d3" id="mcpwork">
-      <div class="row gone"><span>Persistence, live query path, UI, agent</span><span class="ok">SHIPPED &middot; #3267</span></div>
-      <div class="row gone"><span>Confident-read tools auto-approved at connect</span><span class="ok">SHIPPED &middot; #3283</span></div>
-      <div class="row gone"><span>The list now says why a tool is read-only</span><span class="ok">SHIPPED &middot; #3285</span></div>
-      <div class="row gone"><span>OAuth against a customer&rsquo;s MCP server</span><span class="no">STILL OPEN</span></div>
+    <p class="statline rv d3">Everyone saw <em>someone else&rsquo;s connection</em> as their own</p>
+    <div class="miss rv d3" id="slackwork">
+      <div class="row gone"><span>Bot connection renders as the user&rsquo;s own</span><span class="ok">FIXED &middot; #3187</span></div>
+      <div class="row gone"><span>Identity bridge moved onto the identities table</span><span class="ok">FIXED &middot; #3183</span></div>
+      <div class="row gone"><span>Install-override check, answering, dashboard reach</span><span class="ok">FIXED &middot; ENG-3759</span></div>
     </div>
-
-    <p class="note rv d3">A connector used to mean a provider we had written code for. It now means <strong>an address the customer gives us</strong> &mdash; and a classifier decides which of its tools are safe to approve without asking.</p>
   </div>
 </section>
 
-<!-- 04 tenant routing, still open -->
+<!-- 03 ShopBack: the noise -->
+<section class="scene invert" data-scene>
+  <div class="inner">
+    <span class="num-tag act">ACT I &mdash; SHOPBACK &middot; THE SIGNAL</span>
+    <h2><span class="ln"><i>89% of it</i></span><span class="ln"><i>was a robot.</i></span></h2>
+    <p class="statline rv d2">Their Jira corpus</p>
+
+    <div class="prop rv d2" id="prop">
+      <div class="bar2"><span class="seg noise"></span><span class="seg real"></span></div>
+      <div class="lbls"><span>89% &mdash; ONE BOT PROJECT</span><span>11% &mdash; EVERYTHING ELSE</span></div>
+    </div>
+
+    <div class="chart4" id="chart4">
+      <div class="bar" style="--h:100%"><span class="n">8</span><span class="fill"></span><span class="d">NO PREF</span></div>
+      <div class="bar" style="--h:25%"><span class="n">2</span><span class="fill"></span><span class="d">90 DAYS</span></div>
+      <div class="bar" style="--h:13%"><span class="n">1</span><span class="fill"></span><span class="d">30 DAYS</span></div>
+      <div class="bar peak" style="--h:2%"><span class="n">0</span><span class="fill"></span><span class="d">1 DAY</span></div>
+    </div>
+    <p class="statline rv d3">Same corpus. Only the recency preference changed.</p>
+  </div>
+</section>
+
+<!-- 04 IntentHQ: in progress -->
 <section class="scene" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT III &mdash; ONE TENANT &middot; STILL OPEN</span>
-    <h2><span class="ln"><i>Every link</i></span><span class="ln"><i>pointed at the wrong door.</i></span></h2>
-    <p class="statline rv d2">Their own host &middot; <em>rejected by ours</em></p>
+    <span class="num-tag act">ACT II &mdash; INTENTHQ &middot; STILL OPEN</span>
+    <h2><span class="ln"><i>Shipped Friday.</i></span><span class="ln"><i>Still not right.</i></span></h2>
+    <p class="statline rv d2">Fixes <em>didn&rsquo;t hold</em> on today&rsquo;s call</p>
+
+    <div class="miss rv d2" id="miss">
+      <div class="row gone"><span>Meeting notes &mdash; speaker turns</span><span class="ok">INTACT</span></div>
+      <div class="row gone"><span>Summary, actions, decisions, topics</span><span class="no">WAS MISSING</span></div>
+      <div class="row gone"><span>EU connections, lifetime syncs</span><span class="no">ZERO</span></div>
+    </div>
 
     <div class="route rv d3" id="route">
-      <svg viewBox="0 0 700 150" role="img" aria-label="Tenant MCP requests sent to the shared cell host are rejected; the tenant's own host receives nothing">
+      <svg viewBox="0 0 700 150" role="img" aria-label="EU connect requests routed into the US region; the EU region receives nothing">
         <rect class="box" x="1" y="34" width="150" height="60" />
-        <text class="lbl" x="26" y="70">TENANT MCP</text>
+        <text class="lbl" x="20" y="70">EU CONNECT</text>
         <rect class="box" x="440" y="1" width="150" height="60" />
-        <text class="lbl" x="470" y="37">CELL HOST</text>
+        <text class="lbl" x="466" y="37">US REGION</text>
         <rect class="box" x="440" y="88" width="150" height="60" />
-        <text class="lbl" x="462" y="124">TENANT HOST</text>
+        <text class="lbl" x="466" y="124">EU REGION</text>
         <path class="wire" d="M151 64 C 300 64, 300 31, 440 31" />
         <path class="dead" d="M151 64 C 300 64, 300 118, 440 118" />
-        <text class="lbl" x="600" y="37" style="fill:#E4503A">421</text>
+        <text class="lbl" x="596" y="124" style="fill:#E4503A">0 SYNCS</text>
         <path class="pkt" d="M152 54l18 7-18 7 4-7z" />
       </svg>
     </div>
-
-    <div class="miss rv d3" id="tenantwork">
-      <div class="row gone"><span>Connect links built from the cell&rsquo;s origin</span><span class="no">#3275 &middot; IN REVIEW</span></div>
-      <div class="row gone"><span>Provider webhooks registered at the cell host</span><span class="no">#3275 &middot; IN REVIEW</span></div>
-      <div class="row gone"><span>Authenticated MCP returns 421</span><span class="no">#3292 &middot; OPENED THURSDAY</span></div>
-    </div>
-
-    <p class="note rv d3">One root cause underneath three separate reports: a single-tenant deployment was being told its address by <strong>the cell it happens to run in</strong>, rather than by itself.</p>
+    <p class="statline rv d3">Region is permanent &middot; <em>no migration exists</em></p>
   </div>
 </section>
 
-<!-- 05 the rest -->
+<!-- 06 Nature's Fusions: Odoo -->
 <section class="scene invert" data-scene>
   <div class="inner">
-    <span class="num-tag">01 &mdash; THE REST OF IT</span>
-    <h2><span class="ln"><i>And the small ones.</i></span></h2>
-    <p class="statline rv d2">Six more &middot; <em>none of them glamorous</em></p>
-    <div class="miss rv d2" id="rest">
-      <div class="row gone"><span>Batch folder-policy save &mdash; one transaction, one re-sync</span><span class="ok">#3258</span></div>
-      <div class="row gone"><span>Dropbox: team-nested shared folders walked as roots</span><span class="ok">#3253</span></div>
-      <div class="row gone"><span>Embedded Connect panel themed to its host</span><span class="ok">#3259</span></div>
-      <div class="row gone"><span>Tenant database reads, SELECT-only</span><span class="ok">#3274</span></div>
-      <div class="row gone"><span>Two recurring dashboard console errors</span><span class="ok">#3272</span></div>
-      <div class="row gone"><span>Review gate: unreadable verdict vs unwritten one</span><span class="ok">#3221</span></div>
+    <span class="num-tag act">ACT III &mdash; NATURE&rsquo;S FUSIONS &middot; THE BOOKS</span>
+    <h2><span class="ln"><i>Built it twice.</i></span></h2>
+    <p class="statline rv d2">2,473 lines &middot; then <em>2,193 more</em></p>
+
+    <div class="recs rv d2" id="recs" aria-hidden="true">
+      <div class="rec"><span class="id">id: &mdash;</span><span class="ty">INVOICE</span></div>
+      <div class="rec"><span class="id">id: &mdash;</span><span class="ty">BILL</span></div>
+      <div class="rec"><span class="id">id: &mdash;</span><span class="ty">CREDIT MEMO</span></div>
+      <div class="rec"><span class="id">id: &mdash;</span><span class="ty">CONTACT</span></div>
+    </div>
+    <div class="vig badges" aria-hidden="true">
+      <svg viewBox="0 0 340 104">
+        <g class="badge" transform="translate(4 0)"><line class="st" x1="46" y1="0" x2="46" y2="16"/><rect class="st" x="6" y="16" width="80" height="56" rx="3"/><text class="cap" x="16" y="38">ID</text><line class="acc" x1="16" y1="54" x2="76" y2="54" stroke-dasharray="4 5"/></g>
+        <g class="badge" transform="translate(120 0)"><line class="st" x1="46" y1="0" x2="46" y2="16"/><rect class="st" x="6" y="16" width="80" height="56" rx="3"/><text class="cap" x="16" y="38">ID</text><line class="acc" x1="16" y1="54" x2="76" y2="54" stroke-dasharray="4 5"/></g>
+        <g class="badge" transform="translate(236 0)"><line class="st" x1="46" y1="0" x2="46" y2="16"/><rect class="st" x="6" y="16" width="80" height="56" rx="3"/><text class="cap" x="16" y="38">ID</text><line class="acc" x1="16" y1="54" x2="76" y2="54" stroke-dasharray="4 5"/></g>
+      </svg>
+    </div>
+    <p class="statline rv d3">5 credential shapes &middot; <em>byte-identical replies</em></p>
+  </div>
+</section>
+
+<!-- 07 Nature's Fusions: Dropbox -->
+<section class="scene invert" data-scene>
+  <div class="inner">
+    <span class="num-tag act">ACT III &mdash; NATURE&rsquo;S FUSIONS &middot; THE FILES</span>
+    <h2><span class="ln"><i>134 folders.</i></span><span class="ln"><i>Four visible.</i></span></h2>
+    <p class="statline rv d2">&ldquo;Giving us only the wrong folders&rdquo;</p>
+
+    <div class="glass" aria-hidden="true">
+      <svg viewBox="0 0 96 96">
+        <circle class="lens" cx="38" cy="38" r="27"/><circle class="acc" cx="38" cy="38" r="27"/>
+        <line class="acc" x1="58" y1="58" x2="86" y2="86" stroke-width="4"/>
+        <path class="acc" d="M27 33a11 11 0 0 1 11-8" opacity=".5"/>
+      </svg>
+    </div>
+    <div class="folders" id="folders" aria-hidden="true"></div>
+    <div class="key rv d2">
+      <span><i class="on"></i>VISIBLE &mdash; 4</span>
+      <span><i class="off"></i>INVISIBLE &mdash; 130</span>
+    </div>
+
+    <p class="statline rv d3">And it never looked like a failure</p>
+    <div class="meter rv d3" id="meter">
+      <div class="track"><span class="fill"></span></div>
+      <div class="readout">
+        <span id="pct">0% &mdash; BACKFILL</span>
+        <span class="zero">0 DOCUMENTS INDEXED</span>
+      </div>
+    </div>
+    <div class="vig verdict" aria-hidden="true">
+      <svg viewBox="0 0 64 64"><path class="acc2 draw tick" d="M12 34l14 14 26-32"/></svg>
+      <span class="lbl">BUT</span>
+      <svg viewBox="0 0 64 64"><circle class="acc draw nul" cx="32" cy="32" r="20"/><line class="acc" x1="16" y1="48" x2="48" y2="16"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- 08 negative results -->
+<section class="scene" data-scene>
+  <div class="inner">
+    <span class="num-tag">02 &mdash; NEGATIVE RESULTS</span>
+    <h2><span class="ln"><i>Two of them</i></span><span class="ln"><i>were failures.</i></span></h2>
+    <p class="statline rv d2">Written up &middot; left open &middot; labelled</p>
+    <div class="held rv d2" id="held">
+      <div class="hd">
+        <span class="pr"><a class="prlink" href="https://github.com/hyperspell/hyperspell/pull/3171" target="_blank" rel="noopener">PR #3171</a></span>
+        <p>Teach retrieval who &ldquo;me&rdquo; means. It works &mdash; I just oversold the measurement, and corrected it in public rather than quietly editing.</p>
+        <span class="tagline">DO NOT MERGE</span>
+      </div>
+      <div class="hd">
+        <span class="pr"><a class="prlink" href="https://github.com/hyperspell/hyperspell/pull/3170" target="_blank" rel="noopener">PR #3170</a></span>
+        <p>Stop the answer model second-guessing itself. It traded polite &ldquo;I don&rsquo;t know&rdquo;s for confident wrong answers. Strictly worse.</p>
+        <span class="tagline">DO NOT MERGE</span>
+      </div>
+    </div>
+    <div class="vig stamp" aria-hidden="true">
+      <svg viewBox="0 0 150 96">
+        <g class="press">
+          <rect class="st" x="46" y="4"  width="58" height="14" rx="3"/>
+          <rect class="st" x="62" y="18" width="26" height="16"/>
+          <rect class="acc" x="34" y="34" width="82" height="20" rx="2"/>
+        </g>
+        <line class="st" x1="10" y1="86" x2="140" y2="86"/>
+        <rect class="mark acc" x="38" y="62" width="74" height="18" rx="2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 09 reconciled -->
+<section class="scene" data-scene>
+  <div class="inner">
+    <span class="num-tag">03 &mdash; RECONCILED</span>
+    <h2><span class="ln"><i>Then the paperwork.</i></span></h2>
+    <p class="statline rv d2">8 had no ticket &middot; <em>4 were lying</em></p>
+    <div class="tally rv d2" id="tally">
+      <div><span class="v" data-count="26">0</span><span class="k">MERGED</span></div>
+      <div><span class="v" data-count="16">0</span><span class="k">OPEN</span></div>
+      <div><span class="v" data-count="8">0</span><span class="k">TICKETS CREATED</span></div>
+      <div><span class="v" data-count="4">0</span><span class="k">STATUSES FIXED</span></div>
     </div>
     <div class="vig clip" aria-hidden="true">
       <svg viewBox="0 0 190 118">
@@ -600,28 +703,13 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   </div>
 </section>
 
-<!-- 06 tally -->
-<section class="scene" data-scene>
-  <div class="inner">
-    <span class="num-tag">02 &mdash; THE COUNT</span>
-    <h2><span class="ln"><i>Where it landed.</i></span></h2>
-    <p class="statline rv d2">12 tickets filed against one feature &middot; <em>all of them MCP</em></p>
-    <div class="tally rv d2" id="tally">
-      <div><span class="v" data-count="16">0</span><span class="k">MERGED</span></div>
-      <div><span class="v" data-count="8">0</span><span class="k">OPEN</span></div>
-      <div><span class="v" data-count="9">0</span><span class="k">TICKETS CLOSED</span></div>
-      <div><span class="v" data-count="12">0</span><span class="k">TICKETS FILED</span></div>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="inner">
-    <p>Week of 15&ndash;21 August 2026. Merged and open counts are pull requests; line counts are additions and deletions across them. Customer names removed.</p>
-    <p><a class="prev" href="/2026-08-14/">&larr; Previous week: 8&ndash;14 August</a></p>
+    <p>Week of 8&ndash;14 August 2026, across three repositories. Merged and open counts are pull requests; meeting hours are from calendar.</p>
     <p class="sig">WHATDIDDAVIDDO.COM</p>
   </div>
 </footer>
+
 
 <script>
 (function(){
@@ -640,14 +728,13 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   if (!reduce){ window.addEventListener('scroll', onScroll, {passive:true}); onScroll(); }
 
   var REPO = 'https://github.com/hyperspell/hyperspell/pull/';
-  var titles = [[3262,'Picker 1/5: workspace root'],[3263,'Picker 2/5: headless core'],
-    [3264,'Picker 3/5: Connect skin'],[3265,'Picker 4/5: the duplicate deleted'],
-    [3266,'Picker 5/5: onboarding hosts them'],[3270,'Picker 6: dashboard front door'],
-    [3257,'Picker: design and agent handoff'],[3267,'External MCP servers as live sources'],
-    [3283,'Auto-approve confident-read tools'],[3285,'Why a tool is read-only'],
-    [3258,'Batch folder-policy save'],[3259,'Connect panel themed to its host'],
-    [3253,'Dropbox team-nested shared folders'],[3272,'Two dashboard console errors'],
-    [3274,'Tenant database reads, SELECT-only'],[3221,'Review gate: unreadable vs unwritten']];
+  var titles = [[3187,'ShopBack: org-wide connection rows'],[3183,'Slack bot identity bridge'],
+    [3157,'Slack bot install vs service account'],[3172,'ShopBack: Jira project denylist'],
+    [3175,'Recency must reorder, not delete'],[3198,'IntentHQ: Fellow secondary surfaces'],
+    [3220,'IntentHQ: Fellow AI-notes mapping'],[3215,'IntentHQ: malformed id returns 400'],
+    [3250,'IntentHQ: EU Unified region'],[3181,"Nature's Fusions: Odoo integration"],
+    [3225,"Nature's Fusions: direct XML-RPC transport"],[3230,"Nature's Fusions: Dropbox namespaces"],
+    [3193,'Per-tenant query effort floor'],[3217,'Kill switches survive a flag outage']];
   var run = document.getElementById('run');
   if (run){
     var html = titles.map(function(t){
@@ -660,14 +747,28 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   var strip = document.getElementById('strip');
   if (strip){
     var f = document.createDocumentFragment();
-    for (var i=0;i<24;i++){
+    for (var i=0;i<42;i++){
       var el = document.createElement('i');
-      if (i >= 16) el.className = 'o';
+      if (i >= 26) el.className = 'o';
       el.style.transitionDelay = (i*18)+'ms';
       f.appendChild(el);
     }
     strip.appendChild(f);
   }
+
+
+  var fold = document.getElementById('folders');
+  if (fold){
+    var f2 = document.createDocumentFragment(), lit = {5:1,38:1,79:1,116:1};
+    for (var j=0;j<134;j++){
+      var b = document.createElement('b'), d = j*7;
+      if (lit[j]){ b.className='on'; b.style.transitionDelay = d+'ms, '+d+'ms, 1150ms'; }
+      else { b.style.transitionDelay = d+'ms'; }
+      f2.appendChild(b);
+    }
+    fold.appendChild(f2);
+  }
+
 
   function countUp(el){
     var target = parseInt(el.getAttribute('data-count'), 10);
@@ -682,17 +783,32 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
     requestAnimationFrame(step);
   }
 
+  function runMeter(){
+    var out = document.getElementById('pct'), box = document.getElementById('meter');
+    if (!out) return;
+    if (reduce){ out.textContent = '100% \u2014 BACKFILL COMPLETE'; box.classList.add('done'); return; }
+    var start = null, dur = 2400;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      out.textContent = Math.round((1-Math.pow(1-p,3))*100) + '% \u2014 BACKFILL' + (p===1 ? ' COMPLETE' : '');
+      if (p < 1) requestAnimationFrame(step); else box.classList.add('done');
+    }
+    requestAnimationFrame(step);
+  }
+
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){
       if (!e.isIntersecting) return;
       var t = e.target;
       t.classList.add('in');
+      if (t.id === 'meter') runMeter();
       if (t.querySelectorAll) t.querySelectorAll('[data-count]').forEach(countUp);
       io.unobserve(t);
     });
   }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
 
-  document.querySelectorAll('[data-scene],.rv,#strip,#tally,#flip,#route,#stack,#mcpwork,#tenantwork,#rest')
+  document.querySelectorAll('[data-scene],.rv,#chart,#chart4,#folders,#strip,#meter,#recs,#route,#held,#tally,#prop,#miss,#slackwork')
     .forEach(function(n){ io.observe(n); });
 
   var hero = document.querySelector('.hero');
