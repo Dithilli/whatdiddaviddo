@@ -88,6 +88,7 @@ h1 .q{color:var(--signal);display:inline-block}
 .meta .k{display:block;margin-top:9px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.15em;color:var(--fog)}
 .meta div:nth-child(1) .v{color:var(--signal)}
 .meta div:nth-child(2) .v{color:var(--steel)}
+.meta div:nth-child(4) .v{color:var(--ochre)}
 .strip{display:flex;flex-wrap:wrap;gap:5px;margin-top:46px;max-width:600px}
 .strip i{width:12px;height:30px;display:block;background:var(--signal);opacity:0;
   transform:scaleY(0);transform-origin:bottom;transition:opacity .4s ease,transform .55s var(--ease)}
@@ -262,8 +263,9 @@ h1 .q{color:var(--signal);display:inline-block}
   font-size:clamp(38px,5.5vw,54px);line-height:1;font-variant-numeric:tabular-nums}
 .tally .k{display:block;margin-top:11px;font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;color:var(--fog)}
 .tally div:nth-child(1) .v{color:var(--signal)}
-.tally div:nth-child(3) .v{color:var(--viridian)}
-.tally div:nth-child(4) .v{color:var(--ochre)}
+.tally div:nth-child(2) .v{color:var(--ochre)}
+.tally div:nth-child(3) .v{color:var(--steel)}
+.tally div:nth-child(4) .v{color:var(--viridian)}
 
 footer{padding:56px 0 76px;border-top:1px solid var(--hair)}
 footer p{margin:0;font-size:13.5px;color:var(--fog);max-width:44em}
@@ -448,6 +450,54 @@ footer .sig{margin-top:20px;font-family:"JetBrains Mono",monospace;font-size:12p
 }
 
 
+/* ---- paired daily chart: merged vs opened ---- */
+.pair{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,5vw,52px);
+  height:min(30vh,224px);margin-top:48px;max-width:600px}
+.pd{display:grid;grid-template-rows:auto 1fr auto;height:100%}
+.pnums{display:flex;gap:7px;margin-bottom:10px}
+.pnums span{flex:1;text-align:center;font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:clamp(13px,2vw,18px);line-height:1;font-variant-numeric:tabular-nums;
+  opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s var(--ease)}
+.pair.in .pnums span{opacity:1;transform:none;transition-delay:.6s}
+.pnums .nm{color:var(--viridian)}
+.pnums .no{color:var(--ochre)}
+.pnums .nm.z{color:#6C7885}
+.pbars{display:flex;align-items:flex-end;gap:7px;min-height:0}
+.pbars span{flex:1;display:block;height:0;transition:height .85s var(--ease)}
+.pbars .m{background:var(--viridian)}
+.pbars .o{background:var(--ochre)}
+.pbars .z{background:rgba(243,240,234,.2)}
+.pair.in .pbars span{height:var(--h)}
+.pair.in .pd:nth-child(2) .pbars span{transition-delay:.09s}
+.pair.in .pd:nth-child(3) .pbars span{transition-delay:.18s}
+.pair.in .pd:nth-child(4) .pbars span{transition-delay:.27s}
+.pdl{font-family:"JetBrains Mono",monospace;font-size:clamp(9px,1.4vw,11px);letter-spacing:.14em;
+  text-align:center;margin-top:13px;color:var(--fog)}
+.plegend{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--fog)}
+.plegend i{display:inline-block;width:11px;height:11px;margin-right:9px;vertical-align:-1px}
+
+/* ---- open queue cards ---- */
+.queue{display:grid;gap:1px;background:var(--hair);margin-top:48px;grid-template-columns:1fr;
+  max-width:860px;border:1px solid var(--hair)}
+@media (min-width:640px){.queue{grid-template-columns:1fr 1fr}}
+.qc{background:var(--ink);padding:24px 24px 26px;transition:background .3s ease}
+.qc:hover{background:#141B21}
+.qc .top{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.qc .pr{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--fog);
+  text-decoration:none;border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease}
+.qc:hover .pr,.qc .pr:hover{color:var(--signal);border-bottom-color:var(--signal)}
+.qc .pr::after{content:" \2197";font-size:.9em;opacity:0;transition:opacity .2s ease}
+.qc:hover .pr::after{opacity:1}
+.qc .ln2{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--steel);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.qc p{margin:13px 0 0;font-size:16px;line-height:1.5;color:#A9B4BF}
+.qc .st{display:inline-block;margin-top:18px;font-family:"JetBrains Mono",monospace;font-size:10px;
+  letter-spacing:.18em;padding-top:8px;border-top:2px solid var(--ochre);color:var(--ochre);
+  clip-path:inset(0 100% 0 0);transition:clip-path .55s var(--ease) .4s}
+.queue.in .st{clip-path:inset(0 0 0 0)}
+.qc .st.appr{border-top-color:var(--viridian);color:var(--viridian)}
+
 /* ---- previous-week link ---- */
 footer p + p{margin-top:18px}
 footer .prev{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;
@@ -467,11 +517,12 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
     <div class="vig squig" aria-hidden="true">
       <svg viewBox="0 0 430 26"><path class="acc draw" d="M4 17c34-14 62 6 96-2s44-16 78-8 52 16 86 8 44-12 74-4 60 8 88-4"/></svg>
     </div>
-    <p class="statline rv d2"><b>One tenant, made boring</b> &middot; <b>a thirteen-minute turn</b> &middot; <b>two go-live doors</b></p>
+    <p class="statline rv d2"><b>One tenant, made boring</b> &middot; <b>a thirteen-minute turn</b> &middot; <b>two go-live doors</b> &middot; <b>sixteen still open</b></p>
     <div class="meta rv d2">
       <div><span class="v" data-count="19">0</span><span class="k">MERGED</span></div>
       <div><span class="v" data-count="11">0</span><span class="k">FOR THE TENANT</span></div>
       <div><span class="v" data-count="105">0</span><span class="k">WORST QUERY, SEC &middot; WAS 250</span></div>
+      <div><span class="v" data-count="16">0</span><span class="k">STILL OPEN</span></div>
     </div>
     <div class="strip rv d3" id="strip" aria-hidden="true"></div>
     <p class="cue rv d3"><span>SCROLL &darr;</span></p>
@@ -583,16 +634,84 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   </div>
 </section>
 
-<!-- 06 tally -->
+<!-- 06 still open -->
 <section class="scene" data-scene>
   <div class="inner">
-    <span class="num-tag">02 &mdash; THE COUNT</span>
+    <span class="num-tag act">02 &mdash; STILL OPEN</span>
+    <h2><span class="ln"><i>Nineteen landed.</i></span><span class="ln"><i>Sixteen are in review.</i></span></h2>
+    <p class="statline rv d2">Sixteen open &middot; <em>11,550 lines</em> &middot; three approved, waiting</p>
+
+    <div class="pair rv d2" id="pair" role="img" aria-label="Merged versus opened per day: Monday 2 merged and 6 opened, Tuesday 6 and 9, Wednesday 8 and 11, Thursday 0 and 1.">
+      <div class="pd">
+        <div class="pnums"><span class="nm">2</span><span class="no">6</span></div>
+        <div class="pbars"><span class="m" style="--h:18%"></span><span class="o" style="--h:55%"></span></div>
+        <span class="pdl">MON 24</span>
+      </div>
+      <div class="pd">
+        <div class="pnums"><span class="nm">6</span><span class="no">9</span></div>
+        <div class="pbars"><span class="m" style="--h:55%"></span><span class="o" style="--h:82%"></span></div>
+        <span class="pdl">TUE 25</span>
+      </div>
+      <div class="pd">
+        <div class="pnums"><span class="nm">8</span><span class="no">11</span></div>
+        <div class="pbars"><span class="m" style="--h:73%"></span><span class="o" style="--h:100%"></span></div>
+        <span class="pdl">WED 26</span>
+      </div>
+      <div class="pd">
+        <div class="pnums"><span class="nm z">0</span><span class="no">1</span></div>
+        <div class="pbars"><span class="m z" style="--h:3px"></span><span class="o" style="--h:9%"></span></div>
+        <span class="pdl">THU 27</span>
+      </div>
+    </div>
+    <p class="plegend rv d3"><span><i style="background:var(--viridian)"></i>MERGED</span><span><i style="background:var(--ochre)"></i>OPENED</span></p>
+
+    <div class="queue rv d3" id="queue">
+      <div class="qc">
+        <div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3372" target="_blank" rel="noopener">#3372</a><span class="ln2">+5,181</span></div>
+        <p>OAuth for customer-hosted external MCP servers &mdash; the whole surface, in one review.</p>
+        <span class="st">IN REVIEW</span>
+      </div>
+      <div class="qc">
+        <div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3381" target="_blank" rel="noopener">#3381</a><span class="ln2">+943</span></div>
+        <p>Incremental resync, so a connection that falls behind stops costing a full replay.</p>
+        <span class="st">IN REVIEW</span>
+      </div>
+      <div class="qc">
+        <div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3386" target="_blank" rel="noopener">#3386</a><span class="ln2">+766</span></div>
+        <p>Live-query routes made visible &mdash; to the model, to operators, and in the API.</p>
+        <span class="st">IN REVIEW</span>
+      </div>
+      <div class="qc">
+        <div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3391" target="_blank" rel="noopener">#3391</a><span class="ln2">+538</span></div>
+        <p>Slack Real-Time Search, spec&rsquo;d as the non-persisting replacement for bulk ingestion.</p>
+        <span class="st">IN REVIEW</span>
+      </div>
+      <div class="qc">
+        <div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3412" target="_blank" rel="noopener">#3412</a><span class="ln2">+312</span></div>
+        <p>The LinkedIn integration, spec&rsquo;d &mdash; with DM ingestion ruled out on purpose.</p>
+        <span class="st appr">APPROVED &middot; WAITING</span>
+      </div>
+      <div class="qc">
+        <div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3384" target="_blank" rel="noopener">#3384</a><span class="ln2">+123</span></div>
+        <p>The Slack bot&rsquo;s production failure: no session found in context.</p>
+        <span class="st">IN REVIEW</span>
+      </div>
+    </div>
+
+    <p class="note rv d3">Wednesday was the peak of both &mdash; eight merged, eleven opened. Everything after it went into review instead: two specs, a prod fix, and <strong>one open PR larger than everything that shipped all week</strong>.</p>
+  </div>
+</section>
+
+<!-- 07 tally -->
+<section class="scene" data-scene>
+  <div class="inner">
+    <span class="num-tag">03 &mdash; THE COUNT</span>
     <h2><span class="ln"><i>Where it landed.</i></span></h2>
-    <p class="statline rv d2">Eleven of nineteen merges &middot; <em>one tenant</em></p>
+    <p class="statline rv d2">Nineteen merged, sixteen open &middot; <em>one tenant</em></p>
     <div class="tally rv d2" id="tally">
       <div><span class="v" data-count="19">0</span><span class="k">MERGED</span></div>
+      <div><span class="v" data-count="16">0</span><span class="k">STILL OPEN</span></div>
       <div><span class="v" data-count="11">0</span><span class="k">FOR THE TENANT</span></div>
-      <div><span class="v" data-count="8">0</span><span class="k">MERGED WEDNESDAY ALONE</span></div>
       <div><span class="v" data-count="105">0</span><span class="k">WORST QUERY, SEC &middot; WAS 250</span></div>
     </div>
   </div>
@@ -600,7 +719,7 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 
 <footer>
   <div class="inner">
-    <p>Week of 21&ndash;28 August 2026. Merged counts are pull requests; the worst-query figure is the same query on the same corpus, before and after. Customer names removed.</p>
+    <p>Week of 21&ndash;28 August 2026, counted at Friday midday. Merged and open counts are pull requests opened in that window; line counts are additions. The worst-query figure is the same query on the same corpus, before and after. Customer names removed.</p>
     <p><a class="prev" href="/2026-08-21/">&larr; Previous week: 15&ndash;21 August</a></p>
     <p class="sig">WHATDIDDAVIDDO.COM</p>
   </div>
@@ -677,7 +796,7 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
     });
   }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
 
-  document.querySelectorAll('[data-scene],.rv,#strip,#tally,#flip,#route,#stack,#mcpwork,#tenantwork,#rest')
+  document.querySelectorAll('[data-scene],.rv,#strip,#tally,#flip,#route,#stack,#mcpwork,#tenantwork,#rest,#pair,#queue')
     .forEach(function(n){ io.observe(n); });
 
   var hero = document.querySelector('.hero');
