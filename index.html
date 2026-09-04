@@ -514,14 +514,6 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 .reg .pct{display:block;margin-top:14px;font-family:"Archivo",sans-serif;font-weight:800;font-variation-settings:"wdth" 110;
   font-size:clamp(34px,5vw,54px);line-height:1;font-variant-numeric:tabular-nums}
 .reg .pct.on{color:var(--viridian)}.reg .pct.dark{color:var(--fog)}.reg .pct.some{color:var(--ochre)}
-.clock{display:flex;gap:clamp(18px,4vw,44px);flex-wrap:wrap;margin-top:44px;font-family:"JetBrains Mono",monospace}
-.clock div{min-width:120px}
-.clock .t{display:block;font-family:"Archivo",sans-serif;font-weight:800;font-variation-settings:"wdth" 110;
-  font-size:clamp(30px,4.6vw,46px);line-height:1;font-variant-numeric:tabular-nums}
-.clock .l{display:block;margin-top:9px;font-size:11px;letter-spacing:.15em;color:var(--fog)}
-.invert .clock .l{color:#6C7885}
-.clock div:nth-child(1) .t{color:var(--signal)}.clock div:nth-child(2) .t{color:var(--ochre)}.clock div:nth-child(3) .t{color:var(--viridian)}
-.invert .clock div:nth-child(3) .t{color:#2E7A69}
 .miss .row .ok.hot{color:var(--ochre)}
 </style>
 </head>
@@ -536,11 +528,11 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
     <div class="vig squig" aria-hidden="true">
       <svg viewBox="0 0 430 26"><path class="acc draw" d="M4 17c34-14 62 6 96-2s44-16 78-8 52 16 86 8 44-12 74-4 60 8 88-4"/></svg>
     </div>
-    <p class="statline rv d2"><b>Eight features in one night</b> &middot; <b>one flag, three cells</b> &middot; <b>broken within the hour, fixed by lunch</b> &middot; <b>fifty merged</b></p>
+    <p class="statline rv d2"><b>The Slack bot, eight features richer</b> &middot; <b>one flag, three cells</b> &middot; <b>walked the runbook, fixed what it found</b> &middot; <b>fifty merged</b></p>
     <div class="meta rv d2">
       <div><span class="v" data-count="50">0</span><span class="k">MERGED</span></div>
       <div><span class="v" data-count="12">0</span><span class="k">FOR THE SLACK BOT</span></div>
-      <div><span class="v" data-count="8">0</span><span class="k">FEATURES, THURSDAY NIGHT</span></div>
+      <div><span class="v" data-count="8">0</span><span class="k">NEW BOT FEATURES</span></div>
       <div><span class="v" data-count="7">0</span><span class="k">STILL OPEN</span></div>
     </div>
     <div class="strip rv d3" id="strip" aria-hidden="true"></div>
@@ -550,18 +542,13 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 
 <div class="ticker"><div class="run" id="run"></div></div>
 
-<!-- ACT I — the overnight -->
+<!-- ACT I — the slack bot -->
 <section class="scene invert" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT I &mdash; THE SLACK BOT &middot; THURSDAY NIGHT</span>
-    <h2><span class="ln"><i>&ldquo;I want more than fixes.</i></span><span class="ln"><i>I want new features.&rdquo;</i></span></h2>
-    <p class="statline rv d2">Eight features &middot; <em>twelve pull requests</em> &middot; 9,769 lines &middot; one night</p>
+    <span class="num-tag act">ACT I &mdash; THE SLACK BOT</span>
+    <h2><span class="ln"><i>Eight things</i></span><span class="ln"><i>the bot couldn&rsquo;t do.</i></span></h2>
+    <p class="statline rv d2">Eight features &middot; <em>twelve pull requests</em> &middot; 9,769 lines &middot; each with its spec and its tests</p>
 
-    <div class="clock rv d2" aria-label="Timeline: first commit Thursday 22:12 UTC, all eight merged by Friday 09:45 UTC, on production at 10:39 UTC">
-      <div><span class="t">22:12</span><span class="l">THU &middot; FIRST COMMIT</span></div>
-      <div><span class="t">09:45</span><span class="l">FRI &middot; EIGHTH MERGE</span></div>
-      <div><span class="t">10:39</span><span class="l">FRI &middot; ON PRODUCTION</span></div>
-    </div>
 
     <div class="miss rv d3" id="features">
       <div class="row gone"><span>Share an ephemeral answer to the channel; suggest what to ask next</span><span class="ok"><a class="prlink" href="https://github.com/hyperspell/hyperspell/pull/3581" target="_blank" rel="noopener">#3581</a></span></div>
@@ -582,7 +569,7 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
       </svg>
     </div>
 
-    <p class="note rv d3">The brief said <strong>&ldquo;we&rsquo;re gonna grind on them all night.&rdquo;</strong> Eight stacked PRs, each with its spec and tests, each sandbox-checked on real staging data where it touched the database. Eleven and a half hours from the first commit to the eighth merge; fifty-four minutes more to production.</p>
+    <p class="note rv d3">Eight stacked PRs, each independently reviewable, each with its spec written alongside the code and sandbox-checked on real staging data where it touched the database. <strong>The bot went from answering questions to catching you up, briefing you, remembering what to ask, and telling you how fresh its sources are.</strong></p>
   </div>
 </section>
 
@@ -613,9 +600,9 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 <!-- ACT III — the first hour -->
 <section class="scene" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT III &mdash; THE FIRST HOUR ON PRODUCTION</span>
-    <h2><span class="ln"><i>Promoted at 10:39.</i></span><span class="ln"><i>Broken by 11:20.</i></span></h2>
-    <p class="statline rv d2">Found by walking the runbook in <em>#dev</em> &middot; all fixed and re-promoted by 14:06</p>
+    <span class="num-tag act">ACT III &mdash; TESTING IT FOR REAL</span>
+    <h2><span class="ln"><i>Walked the runbook.</i></span><span class="ln"><i>Found five things.</i></span></h2>
+    <p class="statline rv d2">Tested feature by feature in <em>#dev</em> &middot; every finding fixed and re-promoted the same day</p>
 
     <div class="flip rv d2" id="flip">
       <span class="code was">3&times;</span>
@@ -634,7 +621,7 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
       <div class="row gone"><span>Ask-channels configurable from the dashboard, both skins</span><span class="ok">#3600</span></div>
     </div>
 
-    <p class="note rv d3">The stuck placeholder looked like a slow model. It was Block Kit: a block whose buttons share an action id is invalid, so any answer that earned two chips was undeliverable. <strong>Found in Loki, fixed in a hotfix, promoted together with the rest by mid-afternoon.</strong></p>
+    <p class="note rv d3">The stuck placeholder looked like a slow model. It was Block Kit: a block whose buttons share an action id is invalid, so any answer that earned two chips was undeliverable. <strong>Found in Loki, fixed in a hotfix, promoted together with the rest of the findings.</strong></p>
   </div>
 </section>
 
@@ -703,7 +690,7 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
       <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3525" target="_blank" rel="noopener">#3525</a><span class="ln2">+115</span></div><p>Accept the sweep&rsquo;s own backfill finalization as completion evidence.</p><span class="st">IN REVIEW</span></div>
     </div>
 
-    <p class="note rv d3">Friday is the only day that merged as much as it opened &mdash; fourteen and fourteen &mdash; because Friday was the day the night&rsquo;s work landed and the first hour&rsquo;s bugs went straight back in. <strong>Everything the Slack bot needed is in; what&rsquo;s open is the long tail.</strong></p>
+    <p class="note rv d3">Friday is the only day that merged as much as it opened &mdash; fourteen and fourteen &mdash; because Friday was the day the bot stack landed and the runbook&rsquo;s findings went straight back in. <strong>Everything the Slack bot needed is in; what&rsquo;s open is the long tail.</strong></p>
   </div>
 </section>
 
@@ -712,7 +699,7 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   <div class="inner">
     <span class="num-tag">03 &mdash; THE COUNT</span>
     <h2><span class="ln"><i>Where it landed.</i></span></h2>
-    <p class="statline rv d2">Fifty merged, seven open &middot; <em>one Slack bot, nine features richer</em></p>
+    <p class="statline rv d2">Fifty merged, seven open &middot; <em>one Slack bot, eight features richer</em></p>
     <div class="tally rv d2" id="tally">
       <div><span class="v" data-count="50">0</span><span class="k">MERGED</span></div>
       <div><span class="v" data-count="7">0</span><span class="k">STILL OPEN</span></div>
@@ -724,7 +711,7 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 
 <footer>
   <div class="inner">
-    <p>Week of 28 August&ndash;4 September 2026, counted at Friday mid-afternoon. Merged and open counts are pull requests by the author in that window; line counts are additions. Timestamps are UTC. The 229 is review threads opened by automated reviewers on the twelve Slack bot PRs, every one answered and resolved before merge. Customer names removed.</p>
+    <p>Week of 28 August&ndash;4 September 2026, counted at Friday mid-afternoon. Merged and open counts are pull requests by the author in that window; line counts are additions. The 229 is review threads opened by automated reviewers on the twelve Slack bot PRs, every one answered and resolved before merge. Customer names removed.</p>
     <p><a class="prev" href="/2026-08-28/">&larr; Previous week: 21&ndash;28 August</a></p>
     <p class="sig">WHATDIDDAVIDDO.COM</p>
   </div>
