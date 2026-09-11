@@ -556,6 +556,10 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 .cmp .track{grid-column:1 / -1}
 .cmp .track .fill{width:0;transition:width 1.4s var(--ease)}
 .cmp.in .track .fill{width:var(--w)}
+.invert .cmp .track{background:rgba(14,19,23,.1)}
+.invert .cmp .lab{color:#6C7885}
+.invert .cmp .val.ok{color:#2E7A69}
+.invert .cmp .track .fill{background:#2E7A69}
 
 /* eight-day chart */
 .pair.eight{grid-template-columns:repeat(8,1fr);max-width:860px;gap:clamp(6px,2vw,24px)}
@@ -566,7 +570,6 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 .pair.eight .pd:nth-child(6) .pbars span{transition-delay:.45s}
 .pair.eight .pd:nth-child(7) .pbars span{transition-delay:.54s}
 .pair.eight .pd:nth-child(8) .pbars span{transition-delay:.63s}
-@media (min-width:640px){.qc.wide{grid-column:1 / -1}}
 
 @media (prefers-reduced-motion:reduce){
   .chat .m,.miss .row.gone{opacity:1;transform:none}
@@ -585,12 +588,12 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
     <div class="vig squig" aria-hidden="true">
       <svg viewBox="0 0 430 26"><path class="acc draw" d="M4 17c34-14 62 6 96-2s44-16 78-8 52 16 86 8 44-12 74-4 60 8 88-4"/></svg>
     </div>
-    <p class="statline rv d2"><b>A short week</b> &middot; <b>a customer&rsquo;s PDFs, read past page one</b> &middot; <b>a bot that knows when a question isn&rsquo;t for it</b> &middot; <b>five merged</b></p>
+    <p class="statline rv d2"><b>A short week</b> &middot; <b>recency may reorder, never refuse</b> &middot; <b>a customer&rsquo;s PDFs, read past page one</b> &middot; <b>a bot that knows when a question isn&rsquo;t for it</b> &middot; <b>seven merged</b></p>
     <div class="meta rv d2">
-      <div><span class="v" data-count="5">0</span><span class="k">MERGED</span></div>
-      <div><span class="v" data-count="7">0</span><span class="k">OPENED</span></div>
+      <div><span class="v" data-count="7">0</span><span class="k">MERGED</span></div>
+      <div><span class="v" data-count="8">0</span><span class="k">OPENED</span></div>
       <div><span class="v" data-count="52">0</span><span class="k">REVIEW THREADS CLOSED</span></div>
-      <div><span class="v" data-count="3">0</span><span class="k">STILL OPEN</span></div>
+      <div><span class="v" data-count="2">0</span><span class="k">STILL OPEN</span></div>
     </div>
     <div class="strip rv d3" id="strip" aria-hidden="true"></div>
     <p class="cue rv d3"><span>SCROLL &darr;</span></p>
@@ -599,17 +602,45 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 
 <div class="ticker"><div class="run" id="run"></div></div>
 
-<!-- ACT I — the PDFs -->
+<!-- ACT I — recency -->
 <section class="scene invert" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT I &mdash; THE PDFs</span>
+    <span class="num-tag act">ACT I &mdash; RECENCY</span>
+    <h2><span class="ln"><i>Recency may reorder.</i></span><span class="ln"><i>It may not refuse.</i></span></h2>
+    <p class="statline rv d2">The reason recency was rolled back &middot; <em>fixed and merged Friday</em></p>
+
+    <div class="cmp rv d2">
+      <div class="rowc"><span class="lab">OLD ANSWER GATE &middot; 30-DAY RECENCY</span><span class="val zero">0/60</span><span class="track"><span class="fill" style="--w:0%"></span></span></div>
+      <div class="rowc"><span class="lab">NEW ANSWER GATE &middot; 30-DAY RECENCY</span><span class="val ok">60/60</span><span class="track"><span class="fill" style="--w:100%"></span></span></div>
+    </div>
+    <p class="statline rv d2">Benchmark questions that clear the answer gate &middot; <em>same documents in all 60</em> &middot; rerun on the merged code</p>
+
+    <div class="miss rv d3">
+      <div class="row gone"><span>The rollback: with recency on, answers fell from 39 of 60 to 0 of 60 while effectively the same documents came back</span><span class="mut">WHY</span></div>
+      <div class="row gone"><span>The answer gate was reading the decayed score. It now reads relevance from before decay, as the result floor already did</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3679" target="_blank" rel="noopener">#3679</a></span></div>
+      <div class="row gone"><span>The first draft passed its own test while doing nothing in production. Fixed by carrying the score through to where the gate reads it</span><span class="ok hot">CAUGHT</span></div>
+      <div class="row gone"><span>Real answers held steady on the rerun: 54 of 60 with recency on, 55 with it off</span><span class="ok">HELD</span></div>
+      <div class="row gone"><span>Every answer now says what it searched: Slack, HubSpot, Google Drive</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3666" target="_blank" rel="noopener">#3666</a></span></div>
+      <div class="row gone"><span>Sandbox check on a staging copy: 697 of 698 connections had no last-synced stamp, so that footer reads last activity instead</span><span class="mut">SANDBOX</span></div>
+      <div class="row gone"><span>Next gap, in draft: a 30-day pass for &ldquo;what&rsquo;s current?&rdquo; questions, so a fresh document reaches the pool at all</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3685" target="_blank" rel="noopener">#3685</a></span></div>
+      <div class="row gone"><span>Found on the way: a Slack channel is dated by its oldest message, so no date window reaches yesterday&rsquo;s message in an old channel</span><span class="ok hot">FINDING</span></div>
+    </div>
+
+    <p class="note rv d3">A colleague reran the 60-question benchmark on the exact code that merged, in a staging sandbox. <strong>Recency can now reorder answers without deleting them. Whether it should be on by default is a separate question, and the follow-up recommends keeping it optional for now.</strong></p>
+  </div>
+</section>
+
+<!-- ACT II — the PDFs -->
+<section class="scene" data-scene>
+  <div class="inner">
+    <span class="num-tag act">ACT II &mdash; THE PDFs</span>
     <h2><span class="ln"><i>Only page one</i></span><span class="ln"><i>was being read.</i></span></h2>
     <p class="statline rv d2">Customer-reported &middot; <em>two bugs</em>, both silent &middot; opened and merged the same day</p>
 
     <div class="flip rv d2">
       <span class="code was">1/5</span>
       <span class="arw">&rarr;</span>
-      <span class="code" style="color:#2E7A69">5/5</span>
+      <span class="code" style="color:#4C9A88">5/5</span>
     </div>
     <p class="statline rv d2">Pages with content &middot; a real customer PDF &middot; <em>production&rsquo;s own parser</em>, before and after</p>
 
@@ -652,10 +683,10 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   </div>
 </section>
 
-<!-- ACT II — the slack bot -->
+<!-- ACT III — the slack bot -->
 <section class="scene" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT II &mdash; THE SLACK BOT</span>
+    <span class="num-tag act">ACT III &mdash; THE SLACK BOT</span>
     <h2><span class="ln"><i>Not every question</i></span><span class="ln"><i>is for the bot.</i></span></h2>
     <p class="statline rv d2">Two bad replies in <em>#dev</em>, fifty-five minutes apart &middot; three bugs &middot; merged by Friday</p>
 
@@ -675,32 +706,6 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
     </div>
 
     <p class="note rv d3">The other bad reply answered a colleague asking whether a call had been pushed back. <strong>The PR also names what code can&rsquo;t fix: a coordination room like #dev shouldn&rsquo;t be an ask-channel at all. That&rsquo;s a settings change, not a patch.</strong></p>
-  </div>
-</section>
-
-<!-- ACT III — what's current -->
-<section class="scene" data-scene>
-  <div class="inner">
-    <span class="num-tag act">ACT III &mdash; WHAT&rsquo;S CURRENT</span>
-    <h2><span class="ln"><i>A preference</i></span><span class="ln"><i>became a refusal.</i></span></h2>
-    <p class="statline rv d2">Why recency-by-default was rolled back &middot; <em>the answer gate read the decayed score</em></p>
-
-    <div class="cmp rv d2">
-      <div class="rowc"><span class="lab">BENCHMARK ANSWERS &middot; RECENCY OFF</span><span class="val ok">39/60</span><span class="track"><span class="fill" style="--w:65%"></span></span></div>
-      <div class="rowc"><span class="lab">BENCHMARK ANSWERS &middot; RECENCY ON</span><span class="val zero">0/60</span><span class="track"><span class="fill" style="--w:0%"></span></span></div>
-    </div>
-    <p class="statline rv d2">Same questions &middot; <em>effectively the same documents retrieved</em> &middot; every answer lost at the gate</p>
-
-    <div class="miss rv d3">
-      <div class="row gone"><span>The answer gate now reads relevance from before recency decay, as the result floor already did: reorder, never remove</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3679" target="_blank" rel="noopener">#3679</a></span></div>
-      <div class="row gone"><span>The first draft passed its own test while doing nothing in production. Fixed by carrying the score through to where the gate reads it</span><span class="ok hot">CAUGHT</span></div>
-      <div class="row gone"><span>A 30-day pass for &ldquo;what&rsquo;s current?&rdquo; questions, so a fresh document makes it into the pool at all</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3685" target="_blank" rel="noopener">#3685</a></span></div>
-      <div class="row gone"><span>Found on the way: a Slack channel is dated by its oldest message, so no date window reaches yesterday&rsquo;s message in an old channel</span><span class="ok hot">FINDING</span></div>
-      <div class="row gone"><span>Every answer now says what it searched: Slack, HubSpot, Google Drive</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3666" target="_blank" rel="noopener">#3666</a></span></div>
-      <div class="row gone"><span>Sandbox check on a staging copy: 697 of 698 connections had no last-synced stamp, so the footer reads last activity instead</span><span class="ok">SANDBOX</span></div>
-    </div>
-
-    <p class="note rv d3">The rollback&rsquo;s cause was already written down: decayed scores hitting the answer gate. <strong>#3679 is the fix, with tests that run the real ranking pipeline against Postgres; once it lands, recency by default is unblocked. #3685 measures what a default alone can&rsquo;t reach.</strong></p>
   </div>
 </section>
 
@@ -737,10 +742,10 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 <section class="scene" data-scene>
   <div class="inner">
     <span class="num-tag act">02 &mdash; THE SHAPE OF IT</span>
-    <h2><span class="ln"><i>A short week,</i></span><span class="ln"><i>mostly one Wednesday.</i></span></h2>
-    <p class="statline rv d2">Seven opened &middot; <em>five merged</em> &middot; three still open, two of them approved</p>
+    <h2><span class="ln"><i>A short week,</i></span><span class="ln"><i>two full days.</i></span></h2>
+    <p class="statline rv d2">Eight opened &middot; <em>seven merged</em> &middot; two still open</p>
 
-    <div class="pair eight rv d2" role="img" aria-label="Merged versus opened per day, US Central time: Friday 4 September after last week's count, 3 merged and 2 opened; Saturday through Tuesday, none; Wednesday 1 merged and 5 opened; Thursday none; Friday 11, 1 merged and 0 opened.">
+    <div class="pair eight rv d2" role="img" aria-label="Merged versus opened per day, US Central time: Friday 4 September after last week's count, 3 merged and 2 opened; Saturday through Tuesday, none; Wednesday 1 merged and 5 opened; Thursday none; Friday 11, 3 merged and 1 opened.">
       <div class="pd"><div class="pnums"><span class="nm">3</span><span class="no">2</span></div><div class="pbars"><span class="m" style="--h:60%"></span><span class="o" style="--h:40%"></span></div><span class="pdl">FRI 4</span></div>
       <div class="pd"><div class="pnums"><span class="nm z">0</span><span class="no">0</span></div><div class="pbars"><span class="m z" style="--h:3px"></span><span class="o z" style="--h:3px"></span></div><span class="pdl">SAT 5</span></div>
       <div class="pd"><div class="pnums"><span class="nm z">0</span><span class="no">0</span></div><div class="pbars"><span class="m z" style="--h:3px"></span><span class="o z" style="--h:3px"></span></div><span class="pdl">SUN 6</span></div>
@@ -748,17 +753,16 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
       <div class="pd"><div class="pnums"><span class="nm z">0</span><span class="no">0</span></div><div class="pbars"><span class="m z" style="--h:3px"></span><span class="o z" style="--h:3px"></span></div><span class="pdl">TUE 8</span></div>
       <div class="pd"><div class="pnums"><span class="nm">1</span><span class="no">5</span></div><div class="pbars"><span class="m" style="--h:20%"></span><span class="o" style="--h:100%"></span></div><span class="pdl">WED 9</span></div>
       <div class="pd"><div class="pnums"><span class="nm z">0</span><span class="no">0</span></div><div class="pbars"><span class="m z" style="--h:3px"></span><span class="o z" style="--h:3px"></span></div><span class="pdl">THU 10</span></div>
-      <div class="pd"><div class="pnums"><span class="nm">1</span><span class="no">0</span></div><div class="pbars"><span class="m" style="--h:20%"></span><span class="o z" style="--h:3px"></span></div><span class="pdl">FRI 11</span></div>
+      <div class="pd"><div class="pnums"><span class="nm">3</span><span class="no">1</span></div><div class="pbars"><span class="m" style="--h:60%"></span><span class="o" style="--h:20%"></span></div><span class="pdl">FRI 11</span></div>
     </div>
     <p class="plegend rv d3"><span><i style="background:var(--viridian)"></i>MERGED</span><span><i style="background:var(--ochre)"></i>OPENED</span></p>
 
     <div class="queue rv d3">
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3666" target="_blank" rel="noopener">#3666</a><span class="ln2">+1,350</span></div><p>Every answer says what it searched, and, where an account allows it, how fresh each source is.</p><span class="st appr">APPROVED</span></div>
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3679" target="_blank" rel="noopener">#3679</a><span class="ln2">+476</span></div><p>Recency can reorder results but never turn an answer into a refusal.</p><span class="st appr">APPROVED</span></div>
-      <div class="qc wide"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3685" target="_blank" rel="noopener">#3685</a><span class="ln2">+1,234</span></div><p>A fresh-window pass for &ldquo;what&rsquo;s current?&rdquo; questions. Exploratory and off by default, opened to share its measurements.</p><span class="st">DRAFT</span></div>
+      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3717" target="_blank" rel="noopener">#3717</a><span class="ln2">+332</span></div><p>&ldquo;Ask Hyperspell about it&rdquo; in any message&rsquo;s menu: the brain explains the context behind that message, privately, in any channel.</p><span class="st">IN REVIEW</span></div>
+      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3685" target="_blank" rel="noopener">#3685</a><span class="ln2">+1,234</span></div><p>A fresh-window pass for &ldquo;what&rsquo;s current?&rdquo; questions. Exploratory and off by default, opened to share its measurements.</p><span class="st">DRAFT</span></div>
     </div>
 
-    <p class="note rv d3">Wednesday opened five pull requests, and one of them, the PDF fix, went from opened to merged that evening. <strong>Every review thread on this week&rsquo;s pull requests is resolved, merged or not.</strong></p>
+    <p class="note rv d3">Wednesday opened five pull requests, and the PDF fix went from opened to merged that evening. Friday merged three more and opened one. <strong>Every review thread on this week&rsquo;s pull requests is resolved.</strong></p>
   </div>
 </section>
 
@@ -767,11 +771,11 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   <div class="inner">
     <span class="num-tag">03 &mdash; THE COUNT</span>
     <h2><span class="ln"><i>Where it landed.</i></span></h2>
-    <p class="statline rv d2">Five merged, three open &middot; <em>one customer bug closed</em></p>
+    <p class="statline rv d2">Seven merged, two open &middot; <em>recency made safe</em> &middot; one customer bug closed</p>
     <div class="tally rv d2" id="tally">
-      <div><span class="v" data-count="5">0</span><span class="k">MERGED</span></div>
-      <div><span class="v" data-count="3">0</span><span class="k">STILL OPEN</span></div>
-      <div><span class="v" data-count="7">0</span><span class="k">OPENED</span></div>
+      <div><span class="v" data-count="7">0</span><span class="k">MERGED</span></div>
+      <div><span class="v" data-count="2">0</span><span class="k">STILL OPEN</span></div>
+      <div><span class="v" data-count="8">0</span><span class="k">OPENED</span></div>
       <div><span class="v" data-count="52">0</span><span class="k">REVIEW THREADS CLOSED</span></div>
     </div>
   </div>
@@ -779,7 +783,7 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 
 <footer>
   <div class="inner">
-    <p>Week of 4&ndash;11 September 2026, counted early Friday. Merged and opened counts are pull requests by the author since last week&rsquo;s count on the morning of Friday 4 September; days are US Central time; line counts are additions. The 52 is review threads on this edition&rsquo;s pull requests, from automated reviewers and one colleague, every one resolved. Customer names removed.</p>
+    <p>Week of 4&ndash;11 September 2026, counted early Friday. Merged and opened counts are pull requests by the author since last week&rsquo;s count on the morning of Friday 4 September; days are US Central time; line counts are additions. The 60/60 is a colleague&rsquo;s 60-question benchmark rerun on the merged code in a staging sandbox; the old-gate figure is computed from that run&rsquo;s own scores, and the run measures whether recency suppresses answers, not answer quality. The 52 is review threads on this edition&rsquo;s pull requests, from automated reviewers and one colleague, every one resolved. Customer names removed.</p>
     <p><a class="prev" href="/2026-09-04/">&larr; Previous week: 28 August&ndash;4 September</a></p>
     <p class="sig">WHATDIDDAVIDDO.COM</p>
   </div>
@@ -802,10 +806,10 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   if (!reduce){ window.addEventListener('scroll', onScroll, {passive:true}); onScroll(); }
 
   var REPO = 'https://github.com/hyperspell/hyperspell/pull/';
-  var titles = [[3682,'Scanned pages recovered, never silently dropped'],[3688,'Not every question is for the bot'],
-    [3679,'Recency reorders, never refuses'],[3666,'Say what an answer searched'],
-    [3685,'A fresh-window pass for what is current'],[3609,'Off, Ask or Proactive, per channel'],
-    [3606,'Ask your own follow-up'],[3602,'One tip at a time']];
+  var titles = [[3679,'Recency may reorder, never refuse'],[3682,'Scanned pages recovered, never silently dropped'],
+    [3688,'Not every question is for the bot'],[3666,'Say what an answer searched'],
+    [3717,'Ask Hyperspell about any message'],[3685,'A fresh-window pass for what is current'],
+    [3609,'Off, Ask or Proactive, per channel'],[3606,'Ask your own follow-up'],[3602,'One tip at a time']];
   var run = document.getElementById('run');
   if (run){
     var html = titles.map(function(t){
@@ -818,9 +822,9 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   var strip = document.getElementById('strip');
   if (strip){
     var f = document.createDocumentFragment();
-    for (var i=0;i<8;i++){
+    for (var i=0;i<9;i++){
       var el = document.createElement('i');
-      if (i >= 5) el.className = 'o';
+      if (i >= 7) el.className = 'o';
       el.style.transitionDelay = (i*40)+'ms';
       f.appendChild(el);
     }
