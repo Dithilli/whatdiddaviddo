@@ -3,7 +3,8 @@
 A single-page scroll recap of one engineering week, republished weekly.
 Static HTML, served from GitHub Pages.
 
-- `/` — the current week (4–11 September 2026)
+- `/` — the current week (11–18 September 2026)
+- `/2026-09-11/` — week of 4–11 September
 - `/2026-09-04/` — week of 28 August – 4 September
 - `/2026-08-28/` — week of 21–28 August
 - `/2026-08-21/` — week of 15–21 August
