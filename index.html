@@ -577,11 +577,9 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 }
 
 /* ---- 11-18 September edition ---- */
-.prop .seg.closed{background:var(--ochre)}
-.prop .seg.kept{background:var(--viridian)}
-.invert .prop .seg.kept{background:#2E7A69}
 .miss .row .no.hot{color:#B8492E}
 .invert .miss .row .no.hot{color:#B83A26}
+.flip .code.small{font-size:clamp(46px,10vw,112px)}
 </style>
 </head>
 <body>
@@ -595,12 +593,12 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
     <div class="vig squig" aria-hidden="true">
       <svg viewBox="0 0 430 26"><path class="acc draw" d="M4 17c34-14 62 6 96-2s44-16 78-8 52 16 86 8 44-12 74-4 60 8 88-4"/></svg>
     </div>
-    <p class="statline rv d2"><b>A clear-out week</b> &middot; <b>a standup question that finally keeps its dates</b> &middot; <b>a webhook that was accepted and never delivered</b> &middot; <b>a diagnosis refuted by its own test</b> &middot; <b>eighteen merged, twenty-four closed</b></p>
+    <p class="statline rv d2"><b>A backlog of 144 open tickets became 79 that are still true</b> &middot; <b>the bot can answer &ldquo;what shipped this week&rdquo;</b> &middot; <b>private channel names caught before anyone could see them</b> &middot; <b>eighteen merged</b></p>
     <div class="meta rv d2">
       <div><span class="v" data-count="18">0</span><span class="k">MERGED</span></div>
-      <div><span class="v" data-count="14">0</span><span class="k">OPENED</span></div>
-      <div><span class="v" data-count="219">0</span><span class="k">REVIEW THREADS CLOSED</span></div>
-      <div><span class="v" data-count="4">0</span><span class="k">STILL OPEN</span></div>
+      <div><span class="v" data-count="15">0</span><span class="k">OPENED</span></div>
+      <div><span class="v" data-count="24">0</span><span class="k">CLOSED</span></div>
+      <div><span class="v" data-count="5">0</span><span class="k">STILL OPEN</span></div>
     </div>
     <div class="strip rv d3" id="strip" aria-hidden="true"></div>
     <p class="cue rv d3"><span>SCROLL &darr;</span></p>
@@ -609,182 +607,106 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 
 <div class="ticker"><div class="run" id="run"></div></div>
 
-<!-- ACT I — the standup -->
+<!-- ACT I — the backlog -->
 <section class="scene invert" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT I &mdash; THE STANDUP</span>
-    <h2><span class="ln"><i>&ldquo;What did the team do?&rdquo;</i></span><span class="ln"><i>It never kept the dates.</i></span></h2>
-    <p class="statline rv d2">The question reached retrieval with no date window &middot; <em>both halves merged Thursday</em></p>
-
-    <div class="cmp rv d2">
-      <div class="rowc"><span class="lab">OLD REWRITER &middot; PHRASINGS PRODUCTION ACTUALLY SENT</span><span class="val zero">0/11</span><span class="track"><span class="fill" style="--w:0%"></span></span></div>
-      <div class="rowc"><span class="lab">NEW REWRITER &middot; THE SAME ELEVEN</span><span class="val ok">11/11</span><span class="track"><span class="fill" style="--w:100%"></span></span></div>
-    </div>
-    <p class="statline rv d2">&ldquo;Last week&rdquo; phrasings that keep a date window &middot; <em>one test per phrasing</em> &middot; read off a single day of real questions</p>
-
-    <div class="miss rv d3">
-      <div class="row gone"><span>The window is a hard filter on the document date. Without one, the answer is built from the ten most relevant chunks of any age</span><span class="mut">WHY</span></div>
-      <div class="row gone"><span>&ldquo;What shipped in the last 24 hours?&rdquo; was answered with a five-month-old message that happened to contain the phrase</span><span class="no">ANSWERED</span></div>
-      <div class="row gone"><span>&ldquo;hours&rdquo; was not a temporal cue; a deterministic &ldquo;this week&rdquo; beside an explicit date range counted as an unsupported composition and was dropped</span><span class="mut">CAUSE</span></div>
-      <div class="row gone"><span>Eleven &ldquo;last week&rdquo; phrasings in one day, eleven times no supported answer. The control: the same question with explicit bounds got a good summary from the same corpus</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3795" target="_blank" rel="noopener">#3795</a></span></div>
-      <div class="row gone"><span>A period <em>of</em> something is not a window: &ldquo;the last day of June&rdquo;, &ldquo;the last week of August&rdquo;. Each review case became its own regression test</span><span class="ok">HELD</span></div>
-      <div class="row gone"><span>Trailing windows are elapsed time, so &ldquo;the last 24 hours&rdquo; across a clock change is still 24 hours and no bound lands on a wall time that never happened</span><span class="ok">DST</span></div>
-      <div class="row gone"><span>Second half: a standup is a coverage question, not a relevance one. A rail that reads the window instead of ranking against it, grouped by person</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3816" target="_blank" rel="noopener">#3816</a></span></div>
-      <div class="row gone"><span>It enumerates a page per source rather than ranking, so a busy source cannot crowd a quiet one off the only page</span><span class="ok">ENUMERATES</span></div>
-      <div class="row gone"><span>Behind a flag, default off, fails closed. Not yet run live against a workspace &mdash; that is the next thing to prove</span><span class="no hot">UNPROVEN</span></div>
-    </div>
-
-    <p class="note rv d3">Last week&rsquo;s finding still stands, and it is why the rail reads the window directly: an indexed Slack channel is dated by its oldest message, so no date window reaches yesterday. <strong>A source that has indexed nothing since before the window reads as &ldquo;nothing happened&rdquo; when it really means &ldquo;nothing indexed&rdquo;.</strong></p>
-  </div>
-</section>
-
-<!-- ACT II — the webhook -->
-<section class="scene" data-scene>
-  <div class="inner">
-    <span class="num-tag act">ACT II &mdash; THE WEBHOOK</span>
-    <h2><span class="ln"><i>The subscription</i></span><span class="ln"><i>was accepted.</i></span><span class="ln"><i>It never delivered.</i></span></h2>
-    <p class="statline rv d2">168 GitHub connections in production &middot; <em>none re-synced after day one</em> &middot; none had ever received an event</p>
+    <span class="num-tag act">ACT I &mdash; THE BACKLOG</span>
+    <h2><span class="ln"><i>144 open tickets.</i></span><span class="ln"><i>79 that are still true.</i></span></h2>
+    <p class="statline rv d2">One afternoon &middot; <em>every close approved by hand</em>, with its evidence attached</p>
 
     <div class="flip rv d2">
-      <span class="code was">2</span>
+      <span class="code was small">144</span>
       <span class="arw">&rarr;</span>
-      <span class="code" style="color:#4C9A88">1</span>
+      <span class="code small" style="color:#2E7A69">79</span>
     </div>
-    <p class="statline rv d2">Sibling subscriptions blamed for the duplicate-results error &middot; <em>one subscription dies exactly like two</em> &middot; the count was never the cause</p>
+    <p class="statline rv d2">Open tickets, counted live before and after &middot; <em>seventeenth of September</em></p>
 
     <div class="miss rv d3">
-      <div class="row gone"><span>GitHub data froze at connect time. No sweep re-walked it, and a re-walk would have skipped anything already marked complete</span><span class="mut">MEASURED</span></div>
-      <div class="row gone"><span>The commit webhook takes a repository id that connection-wide registration cannot supply. Accepted, delivered nothing. That capability is now removed rather than advertised</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/2891" target="_blank" rel="noopener">#2891</a></span></div>
-      <div class="row gone"><span>A 500-repo org needs about twenty minutes of API calls against a ten-minute activity timeout, and every retry started again from repo zero</span><span class="mut">CAUSE</span></div>
-      <div class="row gone"><span>The walk now snapshots the repo list once and hands back a cursor, so a retry resumes where it stopped</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3731" target="_blank" rel="noopener">#3731</a></span></div>
-      <div class="row gone"><span>A repository-level webhook that needs no filter, probed live on our own connection: a new repo showed up in about a minute</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3735" target="_blank" rel="noopener">#3735</a></span></div>
-      <div class="row gone"><span>What freshness means, written down before more code: rejected credentials are broken, missing verification is unverified, and a quiet source can still be current</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3738" target="_blank" rel="noopener">#3738</a></span></div>
-      <div class="row gone"><span>Health is now kept from what upstream says, not inferred from local document counts, and unverified connections are visible everywhere the status is shown</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3758" target="_blank" rel="noopener">#3758</a></span></div>
-      <div class="row gone"><span>Then the pilot&rsquo;s subscriptions died on their second poll with &ldquo;duplicate results&rdquo;, and the fix shipped a guess at why</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3855" target="_blank" rel="noopener">#3855</a></span></div>
-      <div class="row gone"><span>The post-deploy test refuted its own pull request. The listing ignores the watermark entirely, so every poll returns the whole inventory and the poll after a delivery is flagged a duplicate</span><span class="no hot">REFUTED</span></div>
-      <div class="row gone"><span>The follow-up strips the wrong mechanism out of the spec and records the verified one. No behaviour change</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3869" target="_blank" rel="noopener">#3869</a></span></div>
-      <div class="row gone"><span>Default depth for a new GitHub integration is now the repo summary, not every source directory &mdash; the decision the spec made in July, finally flipped</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3371" target="_blank" rel="noopener">#3371</a></span></div>
+      <div class="row gone"><span>Sixty-seven closed: work that had already shipped, asks a later ticket had absorbed, duplicates folded into the one that said it best</span><span class="ok">CLOSED</span></div>
+      <div class="row gone"><span>Exactly one closed itself, on proof its pull request had merged. Every other one was read and approved by hand, batch by batch</span><span class="ok hot">BY HAND</span></div>
+      <div class="row gone"><span>Each carries a comment saying why: the pull request that merged, the ticket that superseded it, the one it now duplicates</span><span class="ok">EVIDENCE</span></div>
+      <div class="row gone"><span>Three the reconciler wanted closed stayed open, because the ticket&rsquo;s own acceptance criteria still were not met</span><span class="ok">OVERRULED</span></div>
+      <div class="row gone"><span>Nothing was closed for being old. Security, cost, correctness and live customer work was kept deliberately &mdash; some of it re-prioritised instead</span><span class="ok">KEPT</span></div>
+      <div class="row gone"><span>A few were re-bucketed rather than closed: one parked, one retitled and rescoped around what is actually broken now</span><span class="ok">RESCOPED</span></div>
+      <div class="row gone"><span>And two came back the same afternoon &mdash; one reopened, one pulled out of triage and adopted as the canonical security ticket</span><span class="ok">BACK IN</span></div>
     </div>
 
-    <div class="route rv d3" aria-hidden="true">
-      <svg viewBox="0 0 760 120">
-        <rect class="box" x="2" y="34" width="150" height="52" rx="3"/>
-        <text class="lbl" x="22" y="64">PROVIDER</text>
-        <rect class="box" x="304" y="34" width="150" height="52" rx="3"/>
-        <text class="lbl" x="330" y="64">SUBSCRIPTION</text>
-        <rect class="box" x="606" y="34" width="150" height="52" rx="3"/>
-        <text class="lbl" x="642" y="64">THE BRAIN</text>
-        <path class="wire" d="M152 60 H304"/>
-        <path class="dead" d="M454 60 H606"/>
-        <circle class="pkt" cx="160" cy="60" r="4"/>
+    <div class="vig clip" aria-hidden="true">
+      <svg viewBox="0 0 190 118">
+        <rect class="st" x="16" y="10" width="158" height="104" rx="4"/>
+        <rect class="st" x="72" y="2" width="46" height="16" rx="4"/>
+        <rect class="st" x="32" y="34" width="14" height="14" rx="2"/>
+        <rect class="st" x="32" y="58" width="14" height="14" rx="2"/>
+        <rect class="st" x="32" y="82" width="14" height="14" rx="2"/>
+        <line class="st" x1="58" y1="41" x2="156" y2="41"/>
+        <line class="st" x1="58" y1="65" x2="156" y2="65"/>
+        <line class="st" x1="58" y1="89" x2="140" y2="89"/>
+        <path class="acc2 tk" d="M34 41l5 5 9-11"/>
+        <path class="acc2 tk" d="M34 65l5 5 9-11"/>
+        <path class="acc2 tk" d="M34 89l5 5 9-11"/>
       </svg>
     </div>
 
-    <p class="note rv d3">#3855 shipped with a post-deploy test plan whose decisive step could tell its two theories apart. It ran, and it said the shipped rationale was wrong. <strong>The code was harmless either way; the comments and the spec rule it left behind were not, so the follow-up takes them back out.</strong></p>
+    <p class="note rv d3">The number that matters is not the sixty-seven. <strong>It is the seventy-nine still standing &mdash; a backlog somebody can read in one sitting and act on, instead of one everybody scrolls past.</strong></p>
   </div>
 </section>
 
-<!-- ACT III — Wednesday -->
+<!-- ACT II — the standup -->
+<section class="scene" data-scene>
+  <div class="inner">
+    <span class="num-tag act">ACT II &mdash; THE STANDUP</span>
+    <h2><span class="ln"><i>Ask what shipped this week.</i></span><span class="ln"><i>Now it knows which week.</i></span></h2>
+    <p class="statline rv d2">The question used to reach search with no dates at all &middot; <em>merged Thursday</em></p>
+
+    <div class="cmp rv d2">
+      <div class="rowc"><span class="lab">BEFORE &middot; THE PHRASINGS PEOPLE ACTUALLY TYPED</span><span class="val zero">0/11</span><span class="track"><span class="fill" style="--w:0%"></span></span></div>
+      <div class="rowc"><span class="lab">NOW &middot; THE SAME ELEVEN</span><span class="val ok">11/11</span><span class="track"><span class="fill" style="--w:100%"></span></span></div>
+    </div>
+    <p class="statline rv d2">&ldquo;Last week&rdquo; questions that keep their date range &middot; <em>one test per phrasing</em></p>
+
+    <div class="miss rv d3">
+      <div class="row gone"><span>A date range is a hard filter. Without one, &ldquo;what shipped in the last 24 hours&rdquo; was answered from a five-month-old message that happened to contain the phrase</span><span class="no">BEFORE</span></div>
+      <div class="row gone"><span>Eleven ways of asking for last week, in a single day, eleven times nothing. The same question with explicit dates answered fine, from the same material</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3795" target="_blank" rel="noopener">#3795</a></span></div>
+      <div class="row gone"><span>Now &ldquo;the last day&rdquo;, &ldquo;the last 24 hours&rdquo; and their rephrasings resolve to a real window &mdash; while &ldquo;the last day of June&rdquo; still doesn&rsquo;t, because that is a different sentence</span><span class="ok">AFTER</span></div>
+      <div class="row gone"><span>The second half answers by person: who did what, across the days you asked for, read from the window rather than ranked against it</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3816" target="_blank" rel="noopener">#3816</a></span></div>
+      <div class="row gone"><span>Merged, and not switched on anywhere yet</span><span class="mut">NOT LIVE</span></div>
+    </div>
+
+    <div class="vig bubble" aria-hidden="true">
+      <svg viewBox="0 0 260 96">
+        <path class="st" d="M8 8h180a6 6 0 016 6v46a6 6 0 01-6 6H70l-26 22V66H8a6 6 0 01-6-6V14a6 6 0 016-6z"/>
+        <circle class="fillacc dot" cx="52" cy="37" r="5"/>
+        <circle class="fillacc dot" cx="76" cy="37" r="5"/>
+        <circle class="fillacc dot" cx="100" cy="37" r="5"/>
+        <line class="acc2" x1="130" y1="26" x2="170" y2="26"/>
+        <line class="acc2" x1="130" y1="48" x2="158" y2="48"/>
+      </svg>
+    </div>
+
+    <p class="note rv d3">A standup question asks for coverage of a window, not the ten best-matching sentences of all time. <strong>Once the dates survive the question, the rest is arithmetic.</strong></p>
+  </div>
+</section>
+
+<!-- ACT III — caught in review -->
 <section class="scene invert" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT III &mdash; WEDNESDAY</span>
-    <h2><span class="ln"><i>Nine merged.</i></span><span class="ln"><i>Twenty-four closed.</i></span></h2>
-    <p class="statline rv d2">Twenty-four pull requests closed unmerged inside twenty-five minutes &middot; <em>each with a written reason</em></p>
+    <span class="num-tag act">ACT III &mdash; CAUGHT IN REVIEW</span>
+    <h2><span class="ln"><i>Private channel names,</i></span><span class="ln"><i>on a card the room</i></span><span class="ln"><i>could see.</i></span></h2>
+    <p class="statline rv d2">Flagged in review, fixed the same afternoon &middot; <em>the feature had never been switched on</em></p>
 
-    <div class="prop rv d2" role="img" aria-label="On Wednesday 16 September, 24 pull requests were closed unmerged and 9 were merged.">
-      <div class="bar2"><span class="seg closed" style="flex:24"></span><span class="seg kept" style="flex:9"></span></div>
-      <div class="lbls"><span>24 CLOSED UNMERGED</span><span>9 MERGED</span></div>
-    </div>
-
-    <div class="miss rv d3">
-      <div class="row gone"><span>The oldest thing closed had been open since 26 June; the oldest thing merged since 22 July. Neither was waiting on review</span><span class="mut">AGE</span></div>
-      <div class="row gone"><span>OAuth state was signed over the escaped JSON on one side and the unescaped JSON on the other, so any non-ASCII value failed its own signature</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/2649" target="_blank" rel="noopener">#2649</a></span></div>
-      <div class="row gone"><span>Staging and production looked identical, so landing on staging read as &ldquo;all my apps are gone&rdquo;. A badge now says which one you are on</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/2717" target="_blank" rel="noopener">#2717</a></span></div>
-      <div class="row gone"><span>A fresh Mac&rsquo;s /usr/bin/python3 is not Python, it is an Xcode shim. The installer ran it before fetching anything and popped the developer-tools dialog on a new hire</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3123" target="_blank" rel="noopener">#3123</a></span></div>
-      <div class="row gone"><span>Every brain promised a slash command for company skills that does not exist. It now says where the files actually are</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3190" target="_blank" rel="noopener">#3190</a></span></div>
-      <div class="row gone"><span>Closed with its measurement instead of merged: last week&rsquo;s fresh-window draft cost 5.3 seconds at the median where it fired and added no documents</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3685" target="_blank" rel="noopener">#3685</a></span></div>
-      <div class="row gone"><span>One flaky query-plan test had been ejecting pull requests from the merge queue all day, four of Wednesday&rsquo;s own among them. Its fix went in last</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3867" target="_blank" rel="noopener">#3867</a></span></div>
-    </div>
-
-    <div class="vig stamp" aria-hidden="true">
-      <svg viewBox="0 0 150 120">
-        <g class="press">
-          <rect class="st" x="52" y="6" width="46" height="18" rx="3"/>
-          <rect class="st" x="66" y="24" width="18" height="22"/>
-          <rect class="st" x="40" y="46" width="70" height="20" rx="3"/>
-        </g>
-        <line class="st" x1="16" y1="104" x2="134" y2="104"/>
-        <rect class="acc mark" x="44" y="80" width="62" height="20" rx="2"/>
-      </svg>
-    </div>
-
-    <p class="note rv d3">Nothing was closed for being wrong. One was superseded by a narrower fix, one was a product nobody adopted, one was measured and found too expensive. <strong>A pull request open since June is not a backlog item, it is a decision nobody is making &mdash; and each of these now says, in writing, which way it went.</strong></p>
-  </div>
-</section>
-
-<!-- 01 Friday night -->
-<section class="scene" data-scene>
-  <div class="inner">
-    <span class="num-tag">01 &mdash; AFTER LAST WEEK&rsquo;S COUNT</span>
-    <h2><span class="ln"><i>The build broke on</i></span><span class="ln"><i>somebody else&rsquo;s 410.</i></span></h2>
-    <p class="statline rv d2">Four merges landed Friday night, after this page went up &middot; <em>one of them unblocked every other</em></p>
     <div class="miss rv d2">
-      <div class="row gone"><span>Every image publish that evening failed on one line: an archived client whose download now answers 410 Gone. Staging was stuck and nothing could be promoted</span><span class="no">BLOCKED</span></div>
-      <div class="row gone"><span>The line is gone. The local dev stack makes its own bucket with an SDK already in the image; production never took that branch. No new dependency</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3730" target="_blank" rel="noopener">#3730</a></span></div>
-      <div class="row gone"><span>Last week&rsquo;s open queue cleared that night too: the Linear watermark resync merged on auto-merge about forty minutes after the count</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3725" target="_blank" rel="noopener">#3725</a></span></div>
-      <div class="row gone"><span>And the placeholder that shows its work merged the following Wednesday, seventeen review threads resolved, none left open</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3718" target="_blank" rel="noopener">#3718</a></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 02 the shape of it -->
-<section class="scene" data-scene>
-  <div class="inner">
-    <span class="num-tag act">02 &mdash; THE SHAPE OF IT</span>
-    <h2><span class="ln"><i>One Wednesday,</i></span><span class="ln"><i>half the week.</i></span></h2>
-    <p class="statline rv d2">Fourteen opened &middot; <em>eighteen merged</em> &middot; four still open</p>
-
-    <div class="pair eight rv d2" role="img" aria-label="Merged versus opened per day, US Central time: Friday 11 September after last week's count, 4 merged and 3 opened; Saturday 12, 1 merged and 1 opened; Sunday 13 and Monday 14, none merged, 3 opened on Monday; Tuesday 15, 2 merged and 3 opened; Wednesday 16, 9 merged and 4 opened; Thursday 17, 2 merged and none opened; Friday 18, none.">
-      <div class="pd"><div class="pnums"><span class="nm">4</span><span class="no">3</span></div><div class="pbars"><span class="m" style="--h:44%"></span><span class="o" style="--h:75%"></span></div><span class="pdl">FRI 11</span></div>
-      <div class="pd"><div class="pnums"><span class="nm">1</span><span class="no">1</span></div><div class="pbars"><span class="m" style="--h:11%"></span><span class="o" style="--h:25%"></span></div><span class="pdl">SAT 12</span></div>
-      <div class="pd"><div class="pnums"><span class="nm z">0</span><span class="no">0</span></div><div class="pbars"><span class="m z" style="--h:3px"></span><span class="o z" style="--h:3px"></span></div><span class="pdl">SUN 13</span></div>
-      <div class="pd"><div class="pnums"><span class="nm z">0</span><span class="no">3</span></div><div class="pbars"><span class="m z" style="--h:3px"></span><span class="o" style="--h:75%"></span></div><span class="pdl">MON 14</span></div>
-      <div class="pd"><div class="pnums"><span class="nm">2</span><span class="no">3</span></div><div class="pbars"><span class="m" style="--h:22%"></span><span class="o" style="--h:75%"></span></div><span class="pdl">TUE 15</span></div>
-      <div class="pd"><div class="pnums"><span class="nm">9</span><span class="no">4</span></div><div class="pbars"><span class="m" style="--h:100%"></span><span class="o" style="--h:100%"></span></div><span class="pdl">WED 16</span></div>
-      <div class="pd"><div class="pnums"><span class="nm">2</span><span class="no">0</span></div><div class="pbars"><span class="m" style="--h:22%"></span><span class="o z" style="--h:3px"></span></div><span class="pdl">THU 17</span></div>
-      <div class="pd"><div class="pnums"><span class="nm z">0</span><span class="no">0</span></div><div class="pbars"><span class="m z" style="--h:3px"></span><span class="o z" style="--h:3px"></span></div><span class="pdl">FRI 18</span></div>
-    </div>
-    <p class="plegend rv d3"><span><i style="background:var(--viridian)"></i>MERGED</span><span><i style="background:var(--ochre)"></i>OPENED</span></p>
-
-    <div class="queue rv d3">
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3762" target="_blank" rel="noopener">#3762</a><span class="ln2">+3,298</span></div><p>Told it was being pedantic, the bot admitted it could not remember the instruction. This gives it one short line per person about how to answer &mdash; kept, listed, forgettable &mdash; injected below the cache break so nobody else pays for it.</p><span class="st">IN REVIEW &middot; 43 THREADS, 4 OPEN</span></div>
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3812" target="_blank" rel="noopener">#3812</a><span class="ln2">+3,550</span></div><p>Spec, no code: a conversation that carries what scrolled out of the window, and notes that follow the person into their own vault rather than a store only the bot can see.</p><span class="st">IN REVIEW</span></div>
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3869" target="_blank" rel="noopener">#3869</a><span class="ln2">+98</span></div><p>Takes the refuted rationale back out of the spec and the comments, and records what the post-deploy test actually proved. Registration is unchanged.</p><span class="st">IN REVIEW</span></div>
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3870" target="_blank" rel="noopener">#3870</a><span class="ln2">+72</span></div><p>An agent transcript that opens with the human&rsquo;s line was filed under the human. The title now drops the speaker label and stays neutral; per-line attribution is untouched.</p><span class="st">IN REVIEW</span></div>
+      <div class="row gone"><span>The standup card names where it looked. Asked in a public channel, that would have included private ones &mdash; their names, and how much each person had said in them</span><span class="no hot">FOUND</span></div>
+      <div class="row gone"><span>The live read now covers public channels only, plus the channel you asked in, where everyone who can see the card is already a member</span><span class="ok">FIXED</span></div>
+      <div class="row gone"><span>A test asserts a private channel appears on a card asked inside it, and never on one asked anywhere else</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3816" target="_blank" rel="noopener">#3816</a></span></div>
     </div>
 
-    <p class="note rv d3">Wednesday merged nine and closed twenty-four, and the flaky test that had been ejecting them from the queue went in last. Thursday merged the two halves of the standup fix. <strong>219 of 236 review threads on this edition&rsquo;s pull requests are resolved; fifteen of the seventeen left are on the four still in review.</strong></p>
-  </div>
-</section>
-
-<!-- 03 tally -->
-<section class="scene" data-scene>
-  <div class="inner">
-    <span class="num-tag">03 &mdash; THE COUNT</span>
-    <h2><span class="ln"><i>Where it landed.</i></span></h2>
-    <p class="statline rv d2">Eighteen merged, twenty-four closed &middot; <em>a standup that keeps its dates</em> &middot; a diagnosis taken back</p>
-    <div class="tally rv d2" id="tally">
-      <div><span class="v" data-count="18">0</span><span class="k">MERGED</span></div>
-      <div><span class="v" data-count="24">0</span><span class="k">CLOSED UNMERGED</span></div>
-      <div><span class="v" data-count="14">0</span><span class="k">OPENED</span></div>
-      <div><span class="v" data-count="219">0</span><span class="k">REVIEW THREADS CLOSED</span></div>
-    </div>
+    <p class="note rv d3">No card had ever been posted, because the feature was off. <strong>That is the whole argument for building a thing switched off, and reading it properly before it ever runs.</strong></p>
   </div>
 </section>
 
 <footer>
   <div class="inner">
-    <p>Week of 11&ndash;18 September 2026, counted Friday afternoon. Merged, opened and closed counts are pull requests by the author since last week&rsquo;s count on the afternoon of Friday 11 September; days are US Central time; line counts are additions. The 0/11 and 11/11 are the &ldquo;last week&rdquo; phrasings production sent in one day, each now covered by its own rewriter test, and they measure whether a date window survives the rewrite, not answer quality. The standup rail is behind a flag that is off everywhere and has not been run live. The 219 is review threads resolved on this edition&rsquo;s 22 pull requests &mdash; the 18 merged and the 14 opened &mdash; out of 236, nearly all opened by automated reviewers; of the 17 left, 15 are on the four still in review and 2 were left on a July pull request that merged anyway. The 24 closed unmerged were closed deliberately on Wednesday, each with a written reason. Last week&rsquo;s #3719 is still open and still counted against last week. Customer names removed.</p>
+    <p>Week of 11&ndash;18 September 2026, counted Friday afternoon. Merged, opened and closed counts are pull requests by the author since last week&rsquo;s count on the afternoon of Friday 11 September. The 144 and 79 are open tickets assigned to David, counted live before and after 17 September; the sixty-seven closed that afternoon were 25 done, 29 canceled and 13 folded into duplicates. The 0/11 and 11/11 are the ways people actually asked for &ldquo;last week&rdquo; in one day, each now covered by its own test; they measure whether the dates survive the question, not answer quality. The standup answer is merged and switched on nowhere. Customer names removed.</p>
     <p><a class="prev" href="/2026-09-11/">&larr; Previous week: 4&ndash;11 September</a></p>
     <p class="sig">WHATDIDDAVIDDO.COM</p>
   </div>
@@ -807,17 +729,13 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   if (!reduce){ window.addEventListener('scroll', onScroll, {passive:true}); onScroll(); }
 
   var REPO = 'https://github.com/hyperspell/hyperspell/pull/';
-  var titles = [[3816,'Standup as coverage, not relevance'],[3795,'Keep the window on "last 24 hours"'],
-    [3735,'Detect new repos by webhook'],[3758,'Persist health, expose unverified'],
-    [3731,'Checkpoint the repo walk'],[3869,'Correct the record on #3855'],
-    [3855,'One subscription, not two'],[3738,'Define integration freshness'],
-    [3761,'Judge the reply before answering'],[3730,'Drop a client that 410s'],
-    [2891,'Fall back to staleness re-walks'],[3371,'README and tree by default'],
-    [3867,'Stop the plan test flipping'],[3123,'No Xcode prompt on a fresh Mac'],
-    [2649,'Sign OAuth state over unescaped JSON'],[2717,'A badge that says this is staging'],
-    [3190,'Stop promising a command that is not there'],[3718,'The placeholder shows the work'],
-    [3762,'Remember how someone asked to be answered'],[3812,'Sessions that carry'],
-    [3870,'A title neutral about who is speaking']];
+  var titles = [[3816,'Standup, answered by person'],[3795,'Keep the dates on "last week"'],
+    [3761,'Judge the reply before answering'],[3762,'Remember how someone asked to be answered'],
+    [3812,'Sessions that carry'],[3910,'Say unauthorized, not waiting'],
+    [3718,'The placeholder shows the work'],[3867,'Stop the plan test flipping'],
+    [3123,'No Xcode prompt on a fresh Mac'],[2649,'Sign OAuth state over unescaped JSON'],
+    [2717,'A badge that says this is staging'],[3190,'Stop promising a command that is not there'],
+    [3730,'Drop a client that 410s'],[3870,'A title neutral about who is speaking']];
   var run = document.getElementById('run');
   if (run){
     var html = titles.map(function(t){
@@ -830,7 +748,7 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   var strip = document.getElementById('strip');
   if (strip){
     var f = document.createDocumentFragment();
-    for (var i=0;i<22;i++){
+    for (var i=0;i<23;i++){
       var el = document.createElement('i');
       if (i >= 18) el.className = 'o';
       el.style.transitionDelay = (i*40)+'ms';
@@ -862,7 +780,7 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
     });
   }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
 
-  document.querySelectorAll('[data-scene],.rv,#strip,#tally')
+  document.querySelectorAll('[data-scene],.rv,#strip')
     .forEach(function(n){ io.observe(n); });
 
   var hero = document.querySelector('.hero');
