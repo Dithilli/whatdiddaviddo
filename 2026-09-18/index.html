@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>What Did David Do</title>
-<meta name="description" content="One engineering week, 18 - 25 September 2026, with receipts." />
+<meta name="description" content="One engineering week, 11 - 18 September 2026, with receipts." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -580,13 +580,6 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 .miss .row .no.hot{color:#B8492E}
 .invert .miss .row .no.hot{color:#B83A26}
 .flip .code.small{font-size:clamp(46px,10vw,112px)}
-
-/* ---- 18-25 September edition ---- */
-.route .sub{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;fill:var(--fog);opacity:.7}
-.route .box.core{stroke:var(--signal);stroke-opacity:.55}
-.route .pkt.late{animation-delay:2.9s}
-@media (prefers-reduced-motion:reduce){.route .wire{stroke-dashoffset:0}}
-@media (min-width:640px){.queue .qc:last-child:nth-child(odd){grid-column:1 / -1}}
 </style>
 </head>
 <body>
@@ -595,16 +588,16 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 
 <section class="scene hero" data-scene>
   <div class="inner">
-    <span class="num-tag">18 &mdash; 25 SEPTEMBER 2026</span>
+    <span class="num-tag">11 &mdash; 18 SEPTEMBER 2026</span>
     <h1><span class="ln"><i>What did</i></span><span class="ln"><i>David do<span class="q">?</span></i></span></h1>
     <div class="vig squig" aria-hidden="true">
       <svg viewBox="0 0 430 26"><path class="acc draw" d="M4 17c34-14 62 6 96-2s44-16 78-8 52 16 86 8 44-12 74-4 60 8 88-4"/></svg>
     </div>
-    <p class="statline rv d2"><b>A Microsoft Teams bot, merged in one Thursday</b> &middot; <b>org admins can see their whole app&rsquo;s memories again</b> &middot; <b>a company&rsquo;s name back on its workspace</b> &middot; <b>seventeen merged</b></p>
+    <p class="statline rv d2"><b>A backlog of 144 open tickets became 79 that are still true</b> &middot; <b>the bot can answer &ldquo;what shipped this week&rdquo;</b> &middot; <b>private channel names caught before anyone could see them</b> &middot; <b>eighteen merged</b></p>
     <div class="meta rv d2">
-      <div><span class="v" data-count="17">0</span><span class="k">MERGED</span></div>
-      <div><span class="v" data-count="21">0</span><span class="k">OPENED</span></div>
-      <div><span class="v" data-count="0">0</span><span class="k">CLOSED</span></div>
+      <div><span class="v" data-count="18">0</span><span class="k">MERGED</span></div>
+      <div><span class="v" data-count="15">0</span><span class="k">OPENED</span></div>
+      <div><span class="v" data-count="24">0</span><span class="k">CLOSED</span></div>
       <div><span class="v" data-count="5">0</span><span class="k">STILL OPEN</span></div>
     </div>
     <div class="strip rv d3" id="strip" aria-hidden="true"></div>
@@ -614,121 +607,107 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
 
 <div class="ticker"><div class="run" id="run"></div></div>
 
-<!-- ACT I — Teams -->
-<section class="scene" data-scene>
-  <div class="inner">
-    <span class="num-tag act">ACT I &mdash; ONE THURSDAY</span>
-    <h2><span class="ln"><i>Thirteen merged</i></span><span class="ln"><i>on Thursday. Eight</i></span><span class="ln"><i>were a Teams bot.</i></span></h2>
-    <p class="statline rv d2">A stack, merged in order through the queue &middot; <em>3:23pm to 6:35pm Central</em></p>
-
-    <div class="pair seven rv d2" role="img" aria-label="Merged versus opened per day, US Central time: Saturday 0 merged and 1 opened; Sunday none; Monday 1 merged and 3 opened; Tuesday 2 merged and 1 opened; Wednesday 0 merged and 4 opened; Thursday 13 merged and 10 opened; Friday 1 merged and 2 opened.">
-      <div class="pd"><div class="pnums"><span class="nm z">0</span><span class="no">1</span></div><div class="pbars"><span class="m z" style="--h:3px"></span><span class="o" style="--h:8%"></span></div><span class="pdl">SAT 19</span></div>
-      <div class="pd"><div class="pnums"><span class="nm z">0</span><span class="no">0</span></div><div class="pbars"><span class="m z" style="--h:3px"></span><span class="o z" style="--h:3px"></span></div><span class="pdl">SUN 20</span></div>
-      <div class="pd"><div class="pnums"><span class="nm">1</span><span class="no">3</span></div><div class="pbars"><span class="m" style="--h:8%"></span><span class="o" style="--h:23%"></span></div><span class="pdl">MON 21</span></div>
-      <div class="pd"><div class="pnums"><span class="nm">2</span><span class="no">1</span></div><div class="pbars"><span class="m" style="--h:15%"></span><span class="o" style="--h:8%"></span></div><span class="pdl">TUE 22</span></div>
-      <div class="pd"><div class="pnums"><span class="nm z">0</span><span class="no">4</span></div><div class="pbars"><span class="m z" style="--h:3px"></span><span class="o" style="--h:31%"></span></div><span class="pdl">WED 23</span></div>
-      <div class="pd"><div class="pnums"><span class="nm">13</span><span class="no">10</span></div><div class="pbars"><span class="m" style="--h:100%"></span><span class="o" style="--h:77%"></span></div><span class="pdl">THU 24</span></div>
-      <div class="pd"><div class="pnums"><span class="nm">1</span><span class="no">2</span></div><div class="pbars"><span class="m" style="--h:8%"></span><span class="o" style="--h:15%"></span></div><span class="pdl">FRI 25</span></div>
-    </div>
-    <p class="plegend rv d3"><span><i style="background:var(--viridian)"></i>MERGED</span><span><i style="background:var(--ochre)"></i>OPENED</span></p>
-
-    <div class="route rv d2" aria-label="Diagram: Slack and Teams both feed one shared agent turn library.">
-      <svg viewBox="0 0 760 200" role="img">
-        <rect class="box" x="4" y="20" width="176" height="56"/>
-        <text class="lbl" x="22" y="46">SLACK</text>
-        <text class="sub" x="22" y="63">NOW A CALLER</text>
-        <rect class="box" x="4" y="124" width="176" height="56"/>
-        <text class="lbl" x="22" y="150">TEAMS</text>
-        <text class="sub" x="22" y="167">NEW THIS WEEK</text>
-        <path class="wire" d="M180 48H500"/>
-        <path class="wire" d="M180 152H500"/>
-        <circle class="pkt" cx="190" cy="48" r="5"/>
-        <circle class="pkt late" cx="190" cy="152" r="5"/>
-        <rect class="box core" x="500" y="20" width="252" height="160"/>
-        <text class="lbl" x="520" y="92">LIB/AGENT_TURN</text>
-        <text class="sub" x="520" y="112">ONE LOOP &middot; ONE BUDGET</text>
-        <text class="sub" x="520" y="128">ONE WAY TO CITE</text>
-      </svg>
-    </div>
-
-    <div class="miss rv d3">
-      <div class="row gone"><span>First, the Slack bot&rsquo;s agent loop moved out of Slack into a shared library. Slack&rsquo;s prompt came out byte-identical, checked by comparing the two, not by eye</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/4009" target="_blank" rel="noopener">#4009</a></span></div>
-      <div class="row gone"><span>A Teams endpoint that verifies Microsoft&rsquo;s signed token, and pins it to where the reply is going, so a valid token can&rsquo;t be replayed to send answers elsewhere</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/4010" target="_blank" rel="noopener">#4010</a></span></div>
-      <div class="row gone"><span>Who is asking: a Teams user resolved to the Hyperspell person who owns their connections, reusing the email bridges pulled out of Slack&rsquo;s identity ladder that morning</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/4020" target="_blank" rel="noopener">#4020</a></span></div>
-      <div class="row gone"><span>Answers rendered as Teams cards, with the same turn budget and citation links as Slack, now held in one place</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/4022" target="_blank" rel="noopener">#4022</a></span></div>
-      <div class="row gone"><span>Then the turn itself: mention the bot in a channel, or message it directly, and get a cited answer from the same agent Slack uses</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/4024" target="_blank" rel="noopener">#4024</a></span></div>
-      <div class="row gone"><span>And the runbook for the Microsoft side that no code can do: the app registration, the bot resource, the app package, the tenant binding</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/4032" target="_blank" rel="noopener">#4032</a></span></div>
-      <div class="row gone"><span>Off wherever its Microsoft app ID is unset. Staging is first, and waits on that registration</span><span class="mut">NOT LIVE</span></div>
-    </div>
-
-    <p class="note rv d3">The first pull request was the one that made the rest small. <strong>Once the agent stopped being a Slack thing, Teams was intake, identity and rendering &mdash; not a second bot.</strong></p>
-  </div>
-</section>
-
-<!-- ACT II — authority -->
+<!-- ACT I — the backlog -->
 <section class="scene invert" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT II &mdash; WHO GETS TO SEE WHAT</span>
-    <h2><span class="ln"><i>Every admin</i></span><span class="ln"><i>in every org, pinned</i></span><span class="ln"><i>to their own memories.</i></span></h2>
-    <p class="statline rv d2">A permission read from a list Clerk never puts it in &middot; <em>since May</em></p>
+    <span class="num-tag act">ACT I &mdash; THE BACKLOG</span>
+    <h2><span class="ln"><i>144 open tickets.</i></span><span class="ln"><i>79 that are still true.</i></span></h2>
+    <p class="statline rv d2">One afternoon &middot; <em>every close approved by hand</em>, with its evidence attached</p>
 
     <div class="flip rv d2">
-      <span class="code was small">233</span>
+      <span class="code was small">144</span>
       <span class="arw">&rarr;</span>
-      <span class="code small" style="color:#2E7A69">0</span>
+      <span class="code small" style="color:#2E7A69">79</span>
     </div>
-    <p class="statline rv d2">Org apps where no admin could see the whole app &middot; <em>before and after #3919</em></p>
+    <p class="statline rv d2">Open tickets, counted live before and after &middot; <em>seventeenth of September</em></p>
 
-    <div class="miss rv d2">
-      <div class="row gone"><span>&ldquo;Can view all memories&rdquo; was checked against a membership payload that only ever carries Clerk&rsquo;s system permissions. It said no to every member of every org, admins included. The test had mocked a payload Clerk does not produce</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3919" target="_blank" rel="noopener">#3919</a></span></div>
-      <div class="row gone"><span>Its two sibling checks promised to fail closed and didn&rsquo;t: six of seven callers turned a Clerk hiccup into a broken page instead of a clean &ldquo;no&rdquo;. Never a privilege risk &mdash; an error can&rsquo;t return yes</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3936" target="_blank" rel="noopener">#3936</a></span></div>
-      <div class="row gone"><span>Sixty-two workspaces from before May had their company&rsquo;s name replaced by &ldquo;Personal&rdquo; in the redesign. A customer asked how to get it re-connected. Nothing was disconnected; it now says their name</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3920" target="_blank" rel="noopener">#3920</a></span></div>
-      <div class="row gone"><span>The same customer then saw &ldquo;No memories yet&rdquo; on every source page, over 128,790 documents the API returned fine. The page asked as the viewer, who owns almost none of them. This one reversed a written decision, and the pull request said so</span><span class="ok hot"><a href="https://github.com/hyperspell/hyperspell/pull/3973" target="_blank" rel="noopener">#3973</a></span></div>
+    <div class="miss rv d3">
+      <div class="row gone"><span>Sixty-seven closed: work that had already shipped, asks a later ticket had absorbed, duplicates folded into the one that said it best</span><span class="ok">CLOSED</span></div>
+      <div class="row gone"><span>Exactly one closed itself, on proof its pull request had merged. Every other one was read and approved by hand, batch by batch</span><span class="ok hot">BY HAND</span></div>
+      <div class="row gone"><span>Each carries a comment saying why: the pull request that merged, the ticket that superseded it, the one it now duplicates</span><span class="ok">EVIDENCE</span></div>
+      <div class="row gone"><span>Three the reconciler wanted closed stayed open, because the ticket&rsquo;s own acceptance criteria still were not met</span><span class="ok">OVERRULED</span></div>
+      <div class="row gone"><span>Nothing was closed for being old. Security, cost, correctness and live customer work was kept deliberately &mdash; some of it re-prioritised instead</span><span class="ok">KEPT</span></div>
+      <div class="row gone"><span>A few were re-bucketed rather than closed: one parked, one retitled and rescoped around what is actually broken now</span><span class="ok">RESCOPED</span></div>
+      <div class="row gone"><span>And two came back the same afternoon &mdash; one reopened, one pulled out of triage and adopted as the canonical security ticket</span><span class="ok">BACK IN</span></div>
     </div>
 
-    <div class="vig badges" aria-hidden="true">
-      <svg viewBox="0 0 340 110">
-        <g class="badge"><line class="st" x1="56" y1="0" x2="56" y2="14"/><rect class="st" x="16" y="14" width="80" height="70" rx="6"/><line class="acc2" x1="32" y1="42" x2="80" y2="42"/><line class="st" x1="32" y1="60" x2="66" y2="60"/></g>
-        <g class="badge"><line class="st" x1="170" y1="0" x2="170" y2="14"/><rect class="st" x="130" y="14" width="80" height="70" rx="6"/><line class="acc2" x1="146" y1="42" x2="194" y2="42"/><line class="st" x1="146" y1="60" x2="180" y2="60"/></g>
-        <g class="badge"><line class="st" x1="284" y1="0" x2="284" y2="14"/><rect class="st" x="244" y="14" width="80" height="70" rx="6"/><line class="acc2" x1="260" y1="42" x2="308" y2="42"/><line class="st" x1="260" y1="60" x2="294" y2="60"/></g>
+    <div class="vig clip" aria-hidden="true">
+      <svg viewBox="0 0 190 118">
+        <rect class="st" x="16" y="10" width="158" height="104" rx="4"/>
+        <rect class="st" x="72" y="2" width="46" height="16" rx="4"/>
+        <rect class="st" x="32" y="34" width="14" height="14" rx="2"/>
+        <rect class="st" x="32" y="58" width="14" height="14" rx="2"/>
+        <rect class="st" x="32" y="82" width="14" height="14" rx="2"/>
+        <line class="st" x1="58" y1="41" x2="156" y2="41"/>
+        <line class="st" x1="58" y1="65" x2="156" y2="65"/>
+        <line class="st" x1="58" y1="89" x2="140" y2="89"/>
+        <path class="acc2 tk" d="M34 41l5 5 9-11"/>
+        <path class="acc2 tk" d="M34 65l5 5 9-11"/>
+        <path class="acc2 tk" d="M34 89l5 5 9-11"/>
       </svg>
     </div>
 
-    <p class="note rv d3">None of these widened anyone&rsquo;s access. <strong>Each one either restored what a permission already promised, or made a failure read as &ldquo;no&rdquo; instead of as a crash.</strong></p>
+    <p class="note rv d3">The number that matters is not the sixty-seven. <strong>It is the seventy-nine still standing &mdash; a backlog somebody can read in one sitting and act on, instead of one everybody scrolls past.</strong></p>
   </div>
 </section>
 
-<!-- ACT III — smaller, sharper -->
+<!-- ACT II — the standup -->
 <section class="scene" data-scene>
   <div class="inner">
-    <span class="num-tag act">ACT III &mdash; SMALLER, SHARPER</span>
-    <h2><span class="ln"><i>Two bots on</i></span><span class="ln"><i>the standup roster.</i></span></h2>
-    <p class="statline rv d2">Found by the first live cards, fixed the next morning &middot; <em>and four more like it</em></p>
+    <span class="num-tag act">ACT II &mdash; THE STANDUP</span>
+    <h2><span class="ln"><i>Ask what shipped this week.</i></span><span class="ln"><i>Now it knows which week.</i></span></h2>
+    <p class="statline rv d2">The question used to reach search with no dates at all &middot; <em>merged Thursday</em></p>
+
+    <div class="cmp rv d2">
+      <div class="rowc"><span class="lab">BEFORE &middot; THE PHRASINGS PEOPLE ACTUALLY TYPED</span><span class="val zero">0/11</span><span class="track"><span class="fill" style="--w:0%"></span></span></div>
+      <div class="rowc"><span class="lab">NOW &middot; THE SAME ELEVEN</span><span class="val ok">11/11</span><span class="track"><span class="fill" style="--w:100%"></span></span></div>
+    </div>
+    <p class="statline rv d2">&ldquo;Last week&rdquo; questions that keep their date range &middot; <em>one test per phrasing</em></p>
+
+    <div class="miss rv d3">
+      <div class="row gone"><span>A date range is a hard filter. Without one, &ldquo;what shipped in the last 24 hours&rdquo; was answered from a five-month-old message that happened to contain the phrase</span><span class="no">BEFORE</span></div>
+      <div class="row gone"><span>Eleven ways of asking for last week, in a single day, eleven times nothing. The same question with explicit dates answered fine, from the same material</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3795" target="_blank" rel="noopener">#3795</a></span></div>
+      <div class="row gone"><span>Now &ldquo;the last day&rdquo;, &ldquo;the last 24 hours&rdquo; and their rephrasings resolve to a real window &mdash; while &ldquo;the last day of June&rdquo; still doesn&rsquo;t, because that is a different sentence</span><span class="ok">AFTER</span></div>
+      <div class="row gone"><span>The second half answers by person: who did what, across the days you asked for, read from the window rather than ranked against it</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3816" target="_blank" rel="noopener">#3816</a></span></div>
+      <div class="row gone"><span>Merged, and not switched on anywhere yet</span><span class="mut">NOT LIVE</span></div>
+    </div>
+
+    <div class="vig bubble" aria-hidden="true">
+      <svg viewBox="0 0 260 96">
+        <path class="st" d="M8 8h180a6 6 0 016 6v46a6 6 0 01-6 6H70l-26 22V66H8a6 6 0 01-6-6V14a6 6 0 016-6z"/>
+        <circle class="fillacc dot" cx="52" cy="37" r="5"/>
+        <circle class="fillacc dot" cx="76" cy="37" r="5"/>
+        <circle class="fillacc dot" cx="100" cy="37" r="5"/>
+        <line class="acc2" x1="130" y1="26" x2="170" y2="26"/>
+        <line class="acc2" x1="130" y1="48" x2="158" y2="48"/>
+      </svg>
+    </div>
+
+    <p class="note rv d3">A standup question asks for coverage of a window, not the ten best-matching sentences of all time. <strong>Once the dates survive the question, the rest is arithmetic.</strong></p>
+  </div>
+</section>
+
+<!-- ACT III — caught in review -->
+<section class="scene invert" data-scene>
+  <div class="inner">
+    <span class="num-tag act">ACT III &mdash; CAUGHT IN REVIEW</span>
+    <h2><span class="ln"><i>Private channel names,</i></span><span class="ln"><i>on a card the room</i></span><span class="ln"><i>could see.</i></span></h2>
+    <p class="statline rv d2">Flagged in review, fixed the same afternoon &middot; <em>the feature had never been switched on</em></p>
 
     <div class="miss rv d2">
-      <div class="row gone"><span>The first live standup cards listed two of our own bots as teammates. Other apps&rsquo; posts and Slackbot are no longer counted as people</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/4021" target="_blank" rel="noopener">#4021</a></span></div>
-      <div class="row gone"><span>Several messages sent together shared one timestamp, so they could be replayed in any order &mdash; scrambled bodies, a title from the wrong turn. Each now carries its place in line</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/4082" target="_blank" rel="noopener">#4082</a></span></div>
-      <div class="row gone"><span>A GitHub resync now actually walks for missing documents, instead of asking for a replay that stopped after one delivery</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3921" target="_blank" rel="noopener">#3921</a></span></div>
-      <div class="row gone"><span>App-owner settings reached through the bot had been refused since 4 September. Latent &mdash; those tools are switched off &mdash; and caught in review of the Teams work</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/4047" target="_blank" rel="noopener">#4047</a></span></div>
-      <div class="row gone"><span>A conversation between a person and an agent is no longer titled after whoever spoke first</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3870" target="_blank" rel="noopener">#3870</a></span></div>
+      <div class="row gone"><span>The standup card names where it looked. Asked in a public channel, that would have included private ones &mdash; their names, and how much each person had said in them</span><span class="no hot">FOUND</span></div>
+      <div class="row gone"><span>The live read now covers public channels only, plus the channel you asked in, where everyone who can see the card is already a member</span><span class="ok">FIXED</span></div>
+      <div class="row gone"><span>A test asserts a private channel appears on a card asked inside it, and never on one asked anywhere else</span><span class="ok"><a href="https://github.com/hyperspell/hyperspell/pull/3816" target="_blank" rel="noopener">#3816</a></span></div>
     </div>
 
-    <div class="queue rv d3">
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3913" target="_blank" rel="noopener">#3913</a><span class="ln2">+747</span></div><p>Re-indexing unchanged content is meant to cost nothing. On one resync of our own repo, 2,838 of 2,838 unchanged chunks were summarised and embedded again. This skips them.</p><span class="st">IN REVIEW</span></div>
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/4106" target="_blank" rel="noopener">#4106</a><span class="ln2">+234</span></div><p>Why nobody has seen the bot jump in on its own: it spent its daily budget deciding whether to speak, so three silent looks muted a channel for the day.</p><span class="st">IN REVIEW</span></div>
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/4045" target="_blank" rel="noopener">#4045</a><span class="ln2">+1,554</span></div><p>One live smoke test for the Slack bot: threads, date windows, the standup card and its roster, run against the real thing.</p><span class="st appr">APPROVED</span></div>
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/4025" target="_blank" rel="noopener">#4025</a><span class="ln2">+1,126</span></div><p>Telling a real GitHub push from metadata churn, so a changed repo re-indexes only the modules that changed.</p><span class="st">IN REVIEW</span></div>
-      <div class="qc"><div class="top"><a class="pr" href="https://github.com/hyperspell/hyperspell/pull/3976" target="_blank" rel="noopener">#3976</a><span class="ln2">+458</span></div><p>Live GitHub access can search code and read a single file, with secrets files refused before any request is made.</p><span class="st">IN REVIEW</span></div>
-    </div>
-
-    <p class="note rv d3">The first two in that queue are the next week&rsquo;s story. <strong>One makes a routine refresh cheap enough to turn on; the other is why the bot has been so quiet.</strong></p>
+    <p class="note rv d3">No card had ever been posted, because the feature was off. <strong>That is the whole argument for building a thing switched off, and reading it properly before it ever runs.</strong></p>
   </div>
 </section>
 
 <footer>
   <div class="inner">
-    <p>Week of 18&ndash;25 September 2026, counted Friday evening. Merged, opened and closed counts are pull requests by the author since last week&rsquo;s count on the afternoon of Friday 18 September; days are US Central time. The Teams bot is merged and off in any cell without its Microsoft app ID. The 233 org apps, 62 pre-May workspaces, 128,790 documents and 2,838 chunks are as measured in each pull request at the time it was written. Customer names removed.</p>
-    <p><a class="prev" href="/2026-09-18/">&larr; Previous week: 11&ndash;18 September</a></p>
+    <p>Week of 11&ndash;18 September 2026, counted Friday afternoon. Merged, opened and closed counts are pull requests by the author since last week&rsquo;s count on the afternoon of Friday 11 September. The 144 and 79 are open tickets assigned to David, counted live before and after 17 September; the sixty-seven closed that afternoon were 25 done, 29 canceled and 13 folded into duplicates. The 0/11 and 11/11 are the ways people actually asked for &ldquo;last week&rdquo; in one day, each now covered by its own test; they measure whether the dates survive the question, not answer quality. The standup answer is merged and switched on nowhere. Customer names removed.</p>
+    <p><a class="prev" href="/2026-09-11/">&larr; Previous week: 4&ndash;11 September</a></p>
     <p class="sig">WHATDIDDAVIDDO.COM</p>
   </div>
 </footer>
@@ -750,15 +729,13 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   if (!reduce){ window.addEventListener('scroll', onScroll, {passive:true}); onScroll(); }
 
   var REPO = 'https://github.com/hyperspell/hyperspell/pull/';
-  var titles = [[4024,'Teams answers with the shared agent'],[4009,'The agent turn leaves Slack'],
-    [4010,'A Teams endpoint that checks its tokens'],[4020,'Who is asking, in Teams'],
-    [4019,'Email bridges, shared'],[4022,'Answers as Teams cards'],
-    [4023,'One budget, one way to cite'],[4032,'The Teams runbook'],
-    [3919,'Admins can see the whole app again'],[3936,'Two more checks fail closed'],
-    [3920,'Your company, not "Personal"'],[3973,'Sources that are not empty'],
-    [4021,'Bots are not teammates'],[4082,'Replay turns in the order sent'],
-    [3921,'Resync finds missing GitHub docs'],[4047,'Owner tools through the bot'],
-    [3870,'A title neutral about who spoke first']];
+  var titles = [[3816,'Standup, answered by person'],[3795,'Keep the dates on "last week"'],
+    [3761,'Judge the reply before answering'],[3762,'Remember how someone asked to be answered'],
+    [3812,'Sessions that carry'],[3910,'Say unauthorized, not waiting'],
+    [3718,'The placeholder shows the work'],[3867,'Stop the plan test flipping'],
+    [3123,'No Xcode prompt on a fresh Mac'],[2649,'Sign OAuth state over unescaped JSON'],
+    [2717,'A badge that says this is staging'],[3190,'Stop promising a command that is not there'],
+    [3730,'Drop a client that 410s'],[3870,'A title neutral about who is speaking']];
   var run = document.getElementById('run');
   if (run){
     var html = titles.map(function(t){
@@ -771,9 +748,9 @@ footer .prev:hover{color:var(--bone);border-bottom-color:var(--bone)}
   var strip = document.getElementById('strip');
   if (strip){
     var f = document.createDocumentFragment();
-    for (var i=0;i<22;i++){
+    for (var i=0;i<23;i++){
       var el = document.createElement('i');
-      if (i >= 17) el.className = 'o';
+      if (i >= 18) el.className = 'o';
       el.style.transitionDelay = (i*40)+'ms';
       f.appendChild(el);
     }
